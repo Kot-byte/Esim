@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>eSIM by Raccoon Shop</title>
+</head>
+
+<body>
+
+    <header style="background: #10151b;" class="py-4">
+    
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="mb-0 flex-grow-1">
+                    <a href="#" class="raccoon-btn">
+                        eSIM by Raccoon Shop
+                        <img src="assets/images/telegram.svg" alt="Telegram Icon" class="ms-2">
+                    </a>
+                </p>
+                <div class="d-flex align-items-center">
+                    <div class="profile-icon me-4" id="cart-icon">
+                        <i class="fa fa-shopping-cart text-white"></i>
+                        <span id="cart-count" class="badge bg-blue">0</span>
+                    </div>
+                    <a href="#" class="text-white me-4">
+                        <i class="fas fa-bell"></i> 
+                    </a>
+                    <a href="#" class="text-white" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="esimka.html">Esimka</a></li>
+                        <li><a class="dropdown-item" href="index.html">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="cart-panel" class="hidden" style="display: none;">
+            <h3 class="text-center text-white mb-3">Basket</h3>
+            <ul id="cart-items"></ul>
+
+            <button id="go-to-cart" class="start-btn m-3">Go to basket</button>
+            <button id="close-cart">Close</button>
+
+        </div>
+        
+
+    </header>
+    
+    
+    
+    <section class="section packages">
+        <div class="container text-center py-5">
+            <h2 class="title mb-4">Discover Worldwide eSIM Packages</h2>
+            <p class="desc mb-5">Simple, transparent pricing that grows with you. Try any plan free for 30 days</p>
+
+
+            <div class="container pt-4">
+                <!-- Tabs -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <ul class="nav nav-tabs mb-0" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="esim-plans-tab" data-bs-toggle="tab" href="#esim-plans"
+                                role="tab" aria-controls="esim-plans" aria-selected="true">eSIM Plans</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="long-time-plans-tab" data-bs-toggle="tab" href="#long-time-plans"
+                                role="tab" aria-controls="long-time-plans" aria-selected="false">Long Time Plans</a>
+                        </li>
+                    </ul>
+                    <div class="usa-text">
+                        USA
+                    </div>
+
+                </div>
+
+                <hr class="mb-4">
+                <!-- Tab Content -->
+                <div class="tab-content py-5" id="myTabContent">
+                    <div class="tab-pane fade show active" id="esim-plans" role="tabpanel"
+                        aria-labelledby="esim-plans-tab">
+                        <div class="row mb-5">
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="promo-text">Promo Price for 6 Months</div>
+                                        <p class="package-card-title mb-3">Unlimited Plus</p>
+                                        <h5 class="card-text mb-3"><span class="card-price">$24.50</span> <span
+                                                class="card-desc-price">/month</span></h5>
+                                        <p class="package-card-title-grey mb-4">Unlimited Plus</p>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>Unlimited Talk & Text</li>
+                                            <li>Data speeds reduce after 40GB but data is unlimited</li>
+                                            <li>Unlimited International Minutes and Texts to 100 Countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn" data-plan="Unlimited Plus" data-price="24.50">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="promo-text">Promo Price for 6 Months</div>
+                                        <p class="package-card-title mb-3">Unlimited Pro</p>
+                                        <h5 class="card-text mb-3"><span class="card-price">$29.50</span><span
+                                                class="card-desc-price">/month</span></h5>
+                                        <p class="package-card-title-grey mb-4">Unlimited Pro</p>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>Unlimited Talk & Text</li>
+                                            <li>Data speeds reduce after 40GB but data is unlimited</li>
+                                            <li>Unlimited International Minutes and Texts to 100 Countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="best-value-text text-uppercase">Best value!</div>
+                                        <p class="package-card-title mb-3">500MB</p>
+                                        <h5 class="card-text mb-3"><span class="card-price">$15.00</span><span
+                                                class="card-desc-price">/month</span></h5>
+                                        <p class="package-card-title-grey mb-4">$15 Plan</p>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>500 MB data only</li>
+                                            <li>Unlimited national calls and SMS</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="promo-text">47% Price Discount</div>
+                                        <p class="package-card-title mb-3">3GB</p>
+                                        <h5 class="card-text mb-3"><span class="card-price">$10.00</span><span
+                                                class="card-desc-price">/month</span></h5>
+                                        <p class="package-card-title-grey mb-4">$19 Unlimited International Plan</p>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>3GB data at up to 5G speeds</li>
+                                            <li>Unlimited nationwide talk & text</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <p class="package-card-title mb-3">5GB</p>
+                                        <h5 class="card-text mb-3"><span class="card-price">$23.00</span><span
+                                                class="card-desc-price">/month</span></h5>
+                                        <p class="package-card-title-grey mb-4">$23 Unlimited International Plan</p>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>5GB data at up to 5G speeds</li>
+                                            <li>Unlimited nationwide talk & text</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="best-value-text text-uppercase">Best value!</div>
+                                        <p class="package-card-title mb-3">10GB</p>
+                                        <h5 class="card-text mb-3"><span class="card-price">$29.00</span><span
+                                                class="card-desc-price">/month</span></h5>
+                                        <p class="package-card-title-grey mb-4">$29 Unlimited International Plan</p>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>10GB data at up to 5G speeds</li>
+                                            <li>Unlimited nationwide talk & text</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="promo-text">Promo Price for 6 Months</div>
+                                        <p class="package-card-title mb-3">12GB</p>
+                                        <h5 class="card-text  mb-3"><span class="card-price">$10.00</span><span
+                                                class="card-desc-price">/month</span></h5>
+                                        <p class="package-card-title-grey mb-4">$33 High Data Plan</p>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>12GB data at up to 5G speeds</li>
+                                            <li>Unlimited nationwide talk & text</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <p class="package-card-title mb-3">15GB</p>
+                                        <h5 class="card-text mb-3"><span class="card-price">$39.00</span><span
+                                                class="card-desc-price">/month</span></h5>
+                                        <p class="package-card-title-grey mb-4">$39 Unlimited International Plan</p>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>15GB data at up to 5G speeds</li>
+                                            <li>Unlimited nationwide talk & text</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="tab-pane fade" id="long-time-plans" role="tabpanel"
+                        aria-labelledby="long-time-plans-tab">
+                        <div class="row mb-5">
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="promo-text">Promo Price for 6 Months</div>
+                                        <p class="package-card-title mb-3">Unlimited Plus</p>
+                                        <h5 class="card-text card-price mb-3">40 GB<span
+                                                class="card-desc-price">/month</span></h5>
+                                        <div class="row g-2">
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card selected">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$123.00</h5>
+                                                        <p class="card-text-months">for 3 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox1_card1" checked>
+                                                            <label for="checkbox1_card1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$228.00</h5>
+                                                        <p class="card-text-months">for 6 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox2_card1">
+                                                            <label for="checkbox2_card1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$420.00</h5>
+                                                        <p class="card-text-months">for 12 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox3_card1">
+                                                            <label for="checkbox3_card1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>Unlimited Talk & Text</li>
+                                            <li>Data speeds reduce after 40GB but data is unlimited</li>
+                                            <li>Unlimited International Minutes and Texts to 100 Countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="promo-text">Promo Price for 6 Months</div>
+                                        <p class="package-card-title mb-3">Unlimited Pro</p>
+                                        <h5 class="card-text card-price mb-3">60 GB<span
+                                                class="card-desc-price">/month</span></h5>
+                                        <div class="row g-2">
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card selected">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$117.00</h5>
+                                                        <p class="card-text-months">for 3 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox1_card2" checked>
+                                                            <label for="checkbox1_card2"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$228.00</h5>
+                                                        <p class="card-text-months">for 6 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox2_card2">
+                                                            <label for="checkbox2_card2"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$444.00</h5>
+                                                        <p class="card-text-months">for 12 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox3_card2">
+                                                            <label for="checkbox3_card2"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>Unlimited Talk & Text</li>
+                                            <li>Data speeds reduce after 40GB but data is unlimited</li>
+                                            <li>Unlimited International Minutes and Texts to 100 Countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="best-value-text text-uppercase">Best value!</div>
+                                        <p class="package-card-title mb-3">$15 Plan</p>
+                                        <h5 class="card-text card-price mb-3">500 MB<span
+                                                class="card-desc-price">/month</span></h5>
+                                        <div class="row g-2">
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card selected">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$27.00</h5>
+                                                        <p class="card-text-months">for 3 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox1_card3" checked>
+                                                            <label for="checkbox1_card3"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$48.00</h5>
+                                                        <p class="card-text-months">for 6 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox2_card3">
+                                                            <label for="checkbox2_card3"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$96.00</h5>
+                                                        <p class="card-text-months">for 12 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox3_card3">
+                                                            <label for="checkbox3_card3"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>500 MB data only</li>
+                                            <li>Unlimited national calls and SMS</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="promo-text">47% Price Discount</div>
+                                        <p class="package-card-title mb-3">$19 Unlimited International Plan</p>
+                                        <h5 class="card-text card-price mb-3">3GB<span
+                                                class="card-desc-price">/month</span></h5>
+                                        <div class="row g-2">
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card selected">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$36.00</h5>
+                                                        <p class="card-text-months">for 3 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox1_card4" checked>
+                                                            <label for="checkbox1_card4"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$66.00</h5>
+                                                        <p class="card-text-months">for 6 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox2_card4">
+                                                            <label for="checkbox2_card4"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$120.00</h5>
+                                                        <p class="card-text-months">for 12 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox2_card4">
+                                                            <label for="checkbox2_card4"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>3GB data at up to 5G speeds</li>
+                                            <li>Unlimited nationwide talk & text</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <p class="package-card-title mb-3">$23 Unlimited International Plan</p>
+                                        <h5 class="card-text card-price mb-3">5GB<span
+                                                class="card-desc-price">/month</span></h5>
+                                        <div class="row g-2">
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card selected">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$45.00</h5>
+                                                        <p class="card-text-months">for 3 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox1_card5" checked>
+                                                            <label for="checkbox1_card5"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$84.00</h5>
+                                                        <p class="card-text-months">for 6 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox2_card5">
+                                                            <label for="checkbox2_card5"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$156.00</h5>
+                                                        <p class="card-text-months">for 12 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox3_card5">
+                                                            <label for="checkbox3_card5"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>5GB data at up to 5G speeds</li>
+                                            <li>Unlimited nationwide talk & text</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="best-value-text text-uppercase">Best value!</div>
+                                        <p class="package-card-title mb-3">$29 Unlimited International Plan</p>
+                                        <h5 class="card-text card-price mb-3">10 GB<span
+                                                class="card-desc-price">/month</span></h5>
+                                        <div class="row g-2">
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card selected">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$60.00</h5>
+                                                        <p class="card-text-months">for 3 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox1_card6" checked>
+                                                            <label for="checkbox1_card6"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$120.00</h5>
+                                                        <p class="card-text-months">for 6 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox2_card6">
+                                                            <label for="checkbox2_card6"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$240.00</h5>
+                                                        <p class="card-text-months">for 12 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox3_card6">
+                                                            <label for="checkbox3_card6"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>10GB data at up to 5G speeds</li>
+                                            <li>Unlimited nationwide talk & text</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <div class="promo-text">Promo Price for 6 Months</div>
+                                        <p class="package-card-title mb-3">$33 High Data Plan</p>
+                                        <h5 class="card-text card-price mb-3">12 GB <span
+                                                class="card-desc-price">/month</span></h5>
+                                        <div class="row g-2">
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card selected">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$84.00</h5>
+                                                        <p class="card-text-months">for 3 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox1_card7" checked>
+                                                            <label for="checkbox1_card7"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$150.00</h5>
+                                                        <p class="card-text-months">for 6 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox2_card7">
+                                                            <label for="checkbox2_card7"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$264.00</h5>
+                                                        <p class="card-text-months">for 12 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox3_card7">
+                                                            <label for="checkbox3_card7"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>12GB data at up to 5G speeds</li>
+                                            <li>Unlimited nationwide talk & text</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-package mb-3">
+                                    <div class="package-card-body text-start">
+                                        <p class="package-card-title mb-3">$39 Unlimited International Plan</p>
+                                        <h5 class="card-text card-price mb-3">15 GB<span
+                                                class="card-desc-price">/month</span></h5>
+                                        <div class="row g-2">
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card selected">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$78.00</h5>
+                                                        <p class="card-text-months">for 3 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox1_card8" checked>
+                                                            <label for="checkbox1_card8"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$150.00</h5>
+                                                        <p class="card-text-months">for 6 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox2_card8">
+                                                            <label for="checkbox2_card8"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-start price-card">
+                                                    <div class="card-body-price">
+                                                        <h5 class="card-title-little mt-3">$288.00</h5>
+                                                        <p class="card-text-months">for 12 months</p>
+                                                        <div class="checkbox-container">
+                                                            <input type="checkbox" class="custom-checkbox"
+                                                                id="checkbox3_card8">
+                                                            <label for="checkbox3_card8"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-5">
+                                        <ul class="list-unstyled-package mb-5">
+                                            <li>15GB data at up to 5G speeds</li>
+                                            <li>Unlimited nationwide talk & text</li>
+                                            <li>Unlimited international talk & text to 100 countries</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="#" class="btn-basket btn">Add to basket</a>
+                                            <a href="#" class="btn-buy btn">Activate Today!</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="section devices">
+        <div class="container text-center py-5">
+            <h2 class="title mb-4">Compatible with Your Favorite Devices</h2>
+            <p class="desc mb-5">Check out the list of eSIM-compatible devices</p>
+
+            <div class="container pt-4">
+                <div class="d-flex justify-content-center align-items-center">
+                    <ul class="nav nav-tabs mb-0 d-flex gap-5" id="devicesTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link devices-title-tab active" id="supported-devices-tab" data-bs-toggle="tab"
+                                href="#supported-devices" role="tab" aria-controls="supported-devices"
+                                aria-selected="true">
+                                More devices supported
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link devices-title-tab" id="install-esim-tab" data-bs-toggle="tab"
+                                href="#install-esim" role="tab" aria-controls="install-esim" aria-selected="false">
+                                How to install your eSIM?
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr class="mb-4">
+
+                <!-- Контент для вкладок -->
+                <div class="tab-content" id="devicesTabContent">
+                    <!-- Контент для "More Devices Supported" -->
+                    <div class="tab-pane fade show active" id="supported-devices" role="tabpanel"
+                        aria-labelledby="supported-devices-tab">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <ul class="nav nav-tabs mb-0 d-flex gap-3" id="numberTab" role="tablist">
+                                <!-- Вкладки выбора числа устройств -->
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link-tab active" id="number-tab-1" data-bs-toggle="tab"
+                                        href="#number-1" role="tab" aria-controls="number-1"
+                                        aria-selected="true">iPhone</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link-tab" id="number-tab-2" data-bs-toggle="tab" href="#number-2"
+                                        role="tab" aria-controls="number-2" aria-selected="false">iPad</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link-tab" id="number-tab-3" data-bs-toggle="tab" href="#number-3"
+                                        role="tab" aria-controls="number-3" aria-selected="false">Samsung</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link-tab" id="number-tab-4" data-bs-toggle="tab" href="#number-4"
+                                        role="tab" aria-controls="number-4" aria-selected="false">Pixel</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link-tab" id="number-tab-5" data-bs-toggle="tab" href="#number-5"
+                                        role="tab" aria-controls="number-5" aria-selected="false">Huawei</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link-tab" id="number-tab-6" data-bs-toggle="tab" href="#number-6"
+                                        role="tab" aria-controls="number-6" aria-selected="false">Oppo</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link-tab" id="number-tab-7" data-bs-toggle="tab" href="#number-7"
+                                        role="tab" aria-controls="number-7" aria-selected="false">Motorola</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link-tab" id="number-tab-8" data-bs-toggle="tab" href="#number-8"
+                                        role="tab" aria-controls="number-8" aria-selected="false">Xiaomi</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link-tab" id="number-tab-9" data-bs-toggle="tab" href="#number-9"
+                                        role="tab" aria-controls="number-9" aria-selected="false">Sony</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link-tab" id="number-tab-10" data-bs-toggle="tab" href="#number-10"
+                                        role="tab" aria-controls="number-10" aria-selected="false">Others</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-content mt-4" id="numberTabContent">
+                            <!-- Контент для каждой вкладки чисел -->
+                            <div class="tab-pane fade show active" id="number-1" role="tabpanel" aria-labelledby="number-tab-1">
+                                <div class="scrollable-card"> 
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-5 text-start">
+                                            <li class="mb-3">Apple iPhone 11</li>
+                                            <li class="mb-3">Apple iPhone 11 Pro</li>
+                                            <li class="mb-3">Apple iPhone 11 Pro Max</li>
+                                            <li class="mb-3">Apple iPhone 12</li>
+                                            <li class="mb-3">Apple iPhone 12 Mini</li>
+                                            <li class="mb-3">Apple iPhone 12 Pro</li>
+                                            <li class="mb-3">Apple iPhone 12 Pro Max</li>
+                                            <li class="mb-3">Apple iPhone 13</li>
+                                            <li class="mb-3">Apple iPhone 13 Mini</li>
+                                            <li class="mb-3">Apple iPhone 13 Pro</li>
+                                            <li class="mb-3">Apple iPhone 13 Pro Max</li>
+                                            <li class="mb-3">Apple iPhone 14</li>
+                                            <li class="mb-3">Apple iPhone 14 Plus</li>
+                                            <li class="mb-3">Apple iPhone 14 Pro</li>
+                                            <li class="mb-3">Apple iPhone 14 Pro Max</li>
+                                            <li class="mb-3">Apple iPhone SE 2020</li>
+                                            <li class="mb-3">Apple iPhone SE 2022</li>
+                                            <li class="mb-3">Apple iPhone XS</li>
+                                            <li class="mb-3">Apple iPhone XS Max</li>
+                                            <li class="mb-3">Apple iPhone XR</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="number-2" role="tabpanel" aria-labelledby="number-tab-2">
+                                <ul class="list-unstyled mt-5 text-start ms-5">
+                                    <li class="mb-3">iPad Pro 11 (model A2068, from 2020)</li>
+                                    <li class="mb-3">iPad Pro 12.9 (model A2069, from 2020)</li>
+                                    <li class="mb-3">iPad Air (model A2123, from 2019)</li>
+                                    <li class="mb-3">iPad (model A2198, from 2019)</li>
+                                    <li class="mb-3">iPad Mini (model A2124, from 2019)</li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="number-3" role="tabpanel" aria-labelledby="number-tab-3">
+                                <div class="scrollable-card">
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-5 text-start">
+                                            <li class="mb-3">Samsung Galaxy Note 20</li>
+                                            <li class="mb-3">Samsung Galaxy Note 20 Ultra</li>
+                                            <li class="mb-3">Samsung Galaxy S20</li>
+                                            <li class="mb-3">Samsung Galaxy S20 5G</li>
+                                            <li class="mb-3">Samsung Galaxy S20+ 5G</li>
+                                            <li class="mb-3">Samsung Galaxy S20 Ultra 5G</li>
+                                            <li class="mb-3">Samsung Galaxy S21</li>
+                                            <li class="mb-3">Samsung Galaxy S21+</li>
+                                            <li class="mb-3">Samsung Galaxy S21 Ultra</li>
+                                            <li class="mb-3">Samsung Galaxy S22</li>
+                                            <li class="mb-3">Samsung Galaxy S22+</li>
+                                            <li class="mb-3">Samsung Galaxy S22 Ultra</li>
+                                            <li class="mb-3">Samsung Galaxy S23</li>
+                                            <li class="mb-3">Samsung Galaxy S23+</li>
+                                            <li class="mb-3">Samsung Galaxy S23 Ultra</li>
+                                            <li class="mb-3">Samsung Galaxy Z Flip</li>
+                                            <li class="mb-3">Samsung Galaxy Z Flip 3</li>
+                                            <li class="mb-3">Samsung Galaxy Z Flip 4</li>
+                                            <li class="mb-3">Samsung Galaxy Z Fold 2</li>
+                                            <li class="mb-3">Samsung Galaxy Z Fold 3</li>
+                                            <li class="mb-3">Samsung Galaxy Z Fold 4</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="number-4" role="tabpanel" aria-labelledby="number-tab-4">
+                                <div class="scrollable-card">
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-5 text-start">
+                                            <li class="mb-3">Google Pixel 3 XL</li>
+                                            <li class="mb-3">Google Pixel 3a</li>
+                                            <li class="mb-3">Google Pixel 3a XL</li>
+                                            <li class="mb-3">Google Pixel 4</li>
+                                            <li class="mb-3">Google Pixel 4 XL</li>
+                                            <li class="mb-3">Google Pixel 4a</li>
+                                            <li class="mb-3">Google Pixel 4a 5G</li>
+                                            <li class="mb-3">Google Pixel 5</li>
+                                            <li class="mb-3">Google Pixel 5a</li>
+                                            <li class="mb-3">Google Pixel 6</li>
+                                            <li class="mb-3">Google Pixel 6 Pro</li>
+                                            <li class="mb-3">Google Pixel 6a</li>
+                                            <li class="mb-3">Google Pixel 7</li>
+                                            <li class="mb-3">Google Pixel 7 Pro</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="number-5" role="tabpanel" aria-labelledby="number-tab-5">
+                                <ul class="list-unstyled mt-5 text-start ms-5">
+                                    <li class="mb-3">Huawei P40</li>
+                                    <li class="mb-3">Huawei P40 Pro</li>
+                                    <li class="mb-3">Huawei Mate 40 Pro</li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="number-6" role="tabpanel" aria-labelledby="number-tab-6">
+                                <ul class="list-unstyled mt-5 text-start ms-5">
+                                    <li class="mb-3">Oppo Find X3 Pro</li>
+                                    <li class="mb-3">Oppo Reno 5A</li>
+                                    <li class="mb-3">Oppo Find X5</li>
+                                    <li class="mb-3">Oppo Find X5 Pro</li>
+                                </ul>
+                                
+                            </div>
+                            <div class="tab-pane fade" id="number-7" role="tabpanel" aria-labelledby="number-tab-7">
+                                <ul class="list-unstyled mt-5 text-start ms-5">
+                                    <li class="mb-3">Motorola Razr 2019</li>
+                                    <li class="mb-3">Motorola Razr 5G</li>
+                                </ul>
+                                
+                            </div>
+                            <div class="tab-pane fade" id="number-8" role="tabpanel" aria-labelledby="number-tab-8">
+                                <ul class="list-unstyled mt-5 text-start ms-5">
+                                    <li class="mb-3">Xiaomi 12T Pro</li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="number-9" role="tabpanel" aria-labelledby="number-tab-9">
+                                <ul class="list-unstyled mt-5 text-start ms-5">
+                                    <li class="mb-3">Sony Xperia 10 III Lite</li>
+                                    <li class="mb-3">Sony Xperia 10 IV</li>
+                                    <li class="mb-3">Xperia 1 IV</li>
+                                    <li class="mb-3">Sony Xperia 5 IV</li>
+                                </ul>
+                                
+                            </div>
+                            <div class="tab-pane fade" id="number-10" role="tabpanel" aria-labelledby="number-tab-10">
+                                <div class="scrollable-card">
+                                    <ul class="list-unstyled mt-5 text-start ms-5">
+                                        <li class="mb-3">Gemini PDA</li>
+                                        <li class="mb-3">Rakuten Mini</li>
+                                        <li class="mb-3">Rakuten Big-S</li>
+                                        <li class="mb-3">Rakuten Big</li>
+                                        <li class="mb-3">Rakuten Hand</li>
+                                        <li class="mb-3">Rakuten Hand 5G</li>
+                                        <li class="mb-3">Surface Pro X</li>
+                                        <li class="mb-3">Honor Magic 4 Pro</li>
+                                        <li class="mb-3">Fairphone 4</li>
+                                        <li class="mb-3">Sharp Aquos Sense6s</li>
+                                        <li class="mb-3">Sharp Aquos Wish</li>
+                                        <li class="mb-3">DOOGEE V30</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="install-esim" role="tabpanel" aria-labelledby="install-esim-tab">
+                        <div class="container mt-4">
+                            <div class="mb-5">
+                                <h5 class="mb-3">iOS:</h5>
+                                <ol class="text-start">
+                                    <li>Open the <strong>Settings</strong> app on your phone.</li>
+                                    <li>Go to <strong>Mobile Service</strong> > <strong>SIMs</strong>.</li>
+                                    <li>Click <strong>Add eSIM</strong>.</li>
+                                    <li>Select <strong>Use QR code</strong>.</li>
+                                    <li>Scan the eSIM QR code that you received from your network provider.</li>
+                                    <li>Follow the instructions on your device to complete the installation.</li>
+                                </ol>
+                            </div>
+                            <div>
+                                <h5>Android:</h5>
+                                <ol class="text-start">
+                                    <li>Open the <strong>Settings</strong> app on your phone.</li>
+                                    <li>Select <strong>Network & Internet</strong>.</li>
+                                    <li>Tap <strong>SIMs</strong>, and then <strong>Download eSIM</strong>.</li>
+                                    <li>Select <strong>Next</strong> and scan the QR code you received from your network carrier.</li>
+                                    <li>Tap <strong>Activate</strong> to start using your new Lyca number.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+   
+    
+    
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="assets/js/app.js"></script>
+<script>
+
+let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+function addToCart(item) {
+    if (!cartItems.includes(item)) {
+        cartItems.unshift(item);
+        updateCartCount();
+        updateCartPanel();
+    }
+}
+
+function updateCartCount() {
+    const cartCountElement = document.getElementById('cart-count');
+    cartCountElement.textContent = cartItems.length;
+}
+
+function updateCartPanel() {
+    const cartPanel = document.getElementById('cart-panel');
+    const cartItemsList = document.getElementById('cart-items');
+    cartItemsList.innerHTML = '';
+
+    cartItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+
+        const removeButton = document.createElement('button');
+        removeButton.className = 'remove-btn';
+        removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        removeButton.onclick = () => removeFromCart(item);
+
+        li.appendChild(removeButton);
+        cartItemsList.appendChild(li);
+    });
+
+    cartPanel.classList.toggle('hidden');
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
+
+function removeFromCart(item) {
+    cartItems = cartItems.filter(cartItem => cartItem !== item);
+    updateCartCount();
+    updateCartPanel();
+}
+
+window.onload = function() {
+    updateCartCount();
+    updateCartPanel();
+}
+
+document.getElementById('close-cart').addEventListener('click', () => {
+    document.getElementById('cart-panel').style.display = 'none';
+});
+
+document.getElementById('go-to-cart').addEventListener('click', () => {
+    window.location.href = 'basket.html';
+});
+
+document.getElementById('cart-icon').addEventListener('click', () => {
+    const cartPanel = document.getElementById('cart-panel');
+    cartPanel.style.display = (cartPanel.style.display === 'block') ? 'none' : 'block';
+});
+
+document.querySelectorAll('.btn-basket').forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const packageCard = event.target.closest('.card-package');
+        const packageTitle = packageCard.querySelector('.package-card-title').textContent;
+        const priceOptions = packageCard.querySelectorAll('.price-card');
+        let isOptionSelected = false;
+
+        priceOptions.forEach(option => {
+            const checkbox = option.querySelector('.custom-checkbox');
+            if (checkbox && checkbox.checked) {
+                const priceText = option.querySelector('.card-title-little').textContent;
+                const monthsText = option.querySelector('.card-text-months').textContent; // Получаем текст с месяцами
+                addToCart(`${packageTitle} - ${priceText} (${monthsText})`); // Добавляем месяцы в строку
+                isOptionSelected = true;
+            }
+        });
+
+        if (!isOptionSelected) {
+            const priceElement = packageCard.querySelector('.card-price');
+            const priceText = priceElement ? priceElement.textContent.trim() : 'Нет цены';
+            addToCart(`${packageTitle} - ${priceText}`);
+        }
+    });
+});
+
+    </script>
+    
+</html>

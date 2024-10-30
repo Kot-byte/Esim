@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>eSIM by Raccoon Shop</title>
+
+    <style>
+        .title-litle {
+            font-size: 1.8em;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        #basket-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .basket-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-label {
+            font-weight: 300;
+            font-size: 18px;
+            margin-right: 10px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-name {
+            font-weight: 500;
+            font-size: 18px;
+            color: #000;
+        }
+
+        .btn-remove {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #dc3545;
+            font-size: 1.2em;
+        }
+
+        .empty-message {
+            text-align: center;
+            font-style: italic;
+            color: #d8d8d8;
+        }
+
+        #cart-total {
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-top: 10px;
+            color: #ffffff;
+        }
+
+        .zip-code-container {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.zip-code-input {
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #b1b1b1;
+    background: transparent;
+    color: #ffffff;
+    padding: 5px;
+    outline: none;
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <header style="background: #10151b;" class="py-4">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="esimka.html" class="btn btn-link">
+                    <i class="fas fa-arrow-left me-2 bnt-back"></i>
+                </a>
+
+                <p class="mb-0 flex-grow-1">
+                    <a href="#" class="raccoon-btn">
+                        eSIM by Raccoon Shop
+                        <img src="assets/images/telegram.svg" alt="Telegram Icon" class="ms-2">
+                    </a>
+                </p>
+                <div class="d-flex align-items-center">
+                    <div class="profile-icon me-4" id="cart-icon">
+                        <i class="fa fa-shopping-cart text-white"></i>
+                        <span id="cart-count" class="badge bg-blue">0</span>
+                    </div>
+                    <a href="#" class="text-white me-4">
+                        <i class="fas fa-bell"></i>
+                    </a>
+                    <a href="#" class="text-white" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="esimka.html">Esimka</a></li>
+                        <li><a class="dropdown-item" href="index.html">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <h2 class="title-litle mb-5">Items in your basket</h2>
+        <ul id="basket-items">
+        </ul>
+
+        <div class="container mt-4">
+            <p class="cart-total text-center text-white mb-4">Total: $<span id="cart-total">0.00</span></p>
+            <div class="d-flex justify-content-center mb-4">
+                <button class="btn btn-primary me-2">Pay all</button>
+                <a href="balance.html" class="btn btn-primary">Top Up Balance</a>
+
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <input type="text" id="zip-code" placeholder="Enter Zip Code" class="zip-code-input">
+                <button class="btn btn-outline ms-2">
+                    <i class="fas fa-check" style="color:#767676;"></i>
+                </button>
+            </div>
+            
+        </div>
+        
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        let cartItems = [];
+
+        function addToCart(item) {
+            if (!cartItems.includes(item)) {
+                cartItems.push(item);
+                updateBasketItems();
+            }
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count');
+            cartCount.textContent = cartItems.length;
+        }
+
+        function updateBasketItems() {
+            const basketItemsList = document.getElementById('basket-items');
+            basketItemsList.innerHTML = '';
+            let total = 0;
+
+            if (cartItems.length === 0) {
+                const emptyMessage = document.createElement('li');
+                emptyMessage.textContent = 'Your cart is empty';
+                emptyMessage.className = 'empty-message';
+                emptyMessage.style.color = 'grey';
+                basketItemsList.appendChild(emptyMessage);
+                document.getElementById('cart-total').textContent = total.toFixed(2);
+                return;
+            }
+
+            cartItems.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'basket-item';
+
+                // Создаём элемент для текста "Prepay SIM & Plan"
+                const planLabel = document.createElement('div');
+                planLabel.className = 'plan-label';
+                planLabel.textContent = 'Prepay SIM & Plan:';
+
+                // Создаём элемент для названия товара
+                const itemText = document.createElement('span');
+                itemText.className = 'item-name'; // Класс для стилизации названия товара
+                itemText.textContent = item; // Добавляем название товара
+                planLabel.appendChild(itemText); // Добавляем название к плану
+
+                li.appendChild(planLabel); // Добавляем элемент с текстом в li
+
+                // Создаём кнопку удаления
+                const removeButton = document.createElement('button');
+                removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                removeButton.className = 'btn-remove'; // Используем класс для стилизации
+                removeButton.onclick = () => {
+                    removeFromCart(item);
+                };
+
+                li.appendChild(removeButton); // Добавляем кнопку удаления к элементу списка
+                basketItemsList.appendChild(li); // Добавляем элемент списка в корзину
+
+                // Извлекаем цену из названия товара и суммируем
+                const priceMatch = item.match(/-\s*\$(\d+(\.\d{1,2})?)/);
+                if (priceMatch) {
+                    total += parseFloat(priceMatch[1]);
+                }
+            });
+
+            document.getElementById('cart-total').textContent = total.toFixed(2);
+            // Сохраняем обновленный массив в localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+
+        function removeFromCart(item) {
+            cartItems = cartItems.filter(cartItem => cartItem !== item);
+            updateCartCount();
+            updateBasketItems();
+            // Обновляем localStorage после удаления
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+
+        window.onload = function () {
+            // Загружаем товары из localStorage
+            cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            updateCartCount();
+            updateBasketItems();
+        }
+
+    </script>
+
+
+
+
+</body>
+
+</html>
