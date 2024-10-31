@@ -46,7 +46,7 @@
             </h2>
             <p class="desc mb-5">Enjoy seamless global connectivity with our flexible eSIM packages, offering easy
                 activation and top-ups for effortless communication anywhere</p>
-                <a href="#" id="openFormLink" class="start-btn btn d-inline-flex align-items-center justify-content-center"> 
+                <a href="form.html" id="openFormLink" class="start-btn btn d-inline-flex align-items-center justify-content-center"> 
                     Get Connected
                     <i class="fas fa-arrow-right arrow-icon ms-2"></i>
                 </a>
@@ -1271,6 +1271,11 @@
             console.warn("Форма еще не загрузилась. Попробуйте позже.");
         }
     });
+
+    function generateVerificationCode() {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
 </script>
 
 
