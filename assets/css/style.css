@@ -369,9 +369,8 @@ color: #a1a1aa;
 }
 
 .list-unstyled-package li {
-    position: relative; 
-    padding-left: 35px; 
-    margin-bottom: 15px; 
+    padding-left: 5px; 
+    margin-bottom: 5px; 
 }
 
 /* .list-unstyled-package li::before {
