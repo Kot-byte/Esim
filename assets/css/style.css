@@ -381,7 +381,7 @@ color: #a1a1aa;
     top: 0; 
     width: 16px; 
     height: 16px;
-    background: url('/assets/images/ok-pack.svg') no-repeat center center; 
+    background: url('../images/ok-pack.svg') no-repeat center center; 
     background-size: contain;
 }
 
