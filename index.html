@@ -50,6 +50,7 @@
                     Get Connected
                     <i class="fas fa-arrow-right arrow-icon ms-2"></i>
                 </a>
+                <button sp-show-form="239149">Показать форму</button>
                
                 
         </div>
@@ -1254,24 +1255,17 @@
     crossorigin="anonymous"></script>
 <script src="assets/js/app.js"></script>
 <script src="//web.webformscr.com/apps/fc3/build/loader.js" async sp-form-id="cab25c4f725146eb4706fde6c35674d9558a886a2474a7597dfb8d4a9f14be14"></script>
+<script src="//web.webformscr.com/apps/fc3/build/loader.js" async sp-form-id="cab25c4f725146eb4706fde6c35674d9558a886a2474a7597dfb8d4a9f14be14"></script>
 
 <script>
-    document.getElementById('openFormButton').addEventListener('click', function(event) {
-        event.preventDefault(); // Отключает стандартное поведение кнопки
+    document.getElementById("sp-b3a64892-2f01-414e-b236-8ca371117e41").addEventListener("click", function(event) {
+        event.preventDefault(); // Предотвращает отправку формы по умолчанию
 
-        // Проверяем, загружена ли форма, и открываем её, если загрузка завершена
-        if (typeof window.Fc3Form !== 'undefined' && window.Fc3Form.showForm) {
-            window.Fc3Form.showForm('cab25c4f725146eb4706fde6c35674d9558a886a2474a7597dfb8d4a9f14be14');
-        } else {
-            console.warn("Форма еще не загрузилась. Попробуйте позже.");
-        }
+        // Ваша логика отправки формы здесь, если требуется, или просто перенаправление
+        window.location.href = "https://kot-byte.github.io/Esim/form.html"; // Укажите URL для перенаправления
     });
-
-    function generateVerificationCode() {
-    return Math.floor(100000 + Math.random() * 900000).toString();
-}
-
 </script>
+
 
 
 
