@@ -258,7 +258,7 @@ border: none;
 .icon-check {
     width: 20px; 
     height: 20px;
-    background-image: url('/assets/images/ok.svg'); 
+    background-image: url('ok.svg'); 
     background-size: contain;
     background-repeat: no-repeat;
     display: inline-block;
@@ -374,7 +374,7 @@ color: #a1a1aa;
     margin-bottom: 15px; 
 }
 
-.list-unstyled-package li::before {
+/* .list-unstyled-package li::before {
     content: ''; 
     position: absolute; 
     left: 0; 
@@ -383,7 +383,7 @@ color: #a1a1aa;
     height: 16px;
     background: url('../images/ok-pack.svg') no-repeat center center; 
     background-size: contain;
-}
+} */
 
 .btn-basket {
   background: linear-gradient(#18181b, #18181b) padding-box, 
