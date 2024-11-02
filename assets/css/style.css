@@ -193,17 +193,18 @@ header {
   font-weight: 500;
   font-size: 19px;
   position: relative;
+  z-index: 1000;
 }
 
 .raccoon-btn {
-  border: 1px solid #007bff;
+  border: 1px solid #0066FF;
   background-color: transparent;
   border-radius: 100px;
   padding: 0.8rem 1.3rem;
   display: inline-flex;
   text-decoration: none;
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 3px 10px rgba(202, 214, 255, 0.1);
 }
 
 .raccoon-btn:hover {
@@ -219,6 +220,11 @@ header {
   transform: translate(3px, -3px);
 }
 
+.raccoon-btn-little {
+  font-weight: 400;
+  font-size: 16px;
+}
+
 .hero {
   height: 100vh;
   padding: 200px 0; 
@@ -232,6 +238,13 @@ header {
   height: auto;
 }
 
+.crypto-image2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 330px;
+  height: auto;
+}
 
 .title {
   font-weight: 600;
@@ -242,6 +255,11 @@ header {
   font-weight: 400;
   font-size: 20px;
   color: #a3a3a3;
+}
+
+.title-h2 {
+  font-weight: 600;
+  font-size: 42px;
 }
 
 .crypto-text{
@@ -268,6 +286,7 @@ border: none;
   border: none;
   color: white;
   cursor: pointer;
+  font-size: 15px; 
 }
 
 .start-btn:hover {
@@ -709,24 +728,28 @@ color: #94a3b8;
 
 #cart-panel {
   position: absolute;
-  top: 100px;
+  top: 106px;
   right: 0;
   width: 450px;
-  max-height: 400px;
-  height: 400px;
-  overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.8);
+  max-height: 420px;
+  height: 420px;
+  background-color:#191E25;
   border-radius: 8px;
   padding: 30px;
-  z-index: 1000;
+  border-radius: 0 0 0 15px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: column; 
+  box-shadow: -3px 3px 0 0 rgba(159, 159, 159, 0.78);
+background: #191e25;
 }
 
 #cart-items {
-  flex-grow: 1;
-  overflow-y: auto;
+  flex-grow: 1; 
+  height: 200px;
+  max-height: 250px;
+  overflow-y: auto; 
+  list-style-type: none;
+  padding: 0 15px;
 }
 
 #cart-panel::-webkit-scrollbar {
@@ -753,10 +776,22 @@ color: #94a3b8;
 }
 
 #cart-items li {
+  background-color:#f0f0f0;
+  color: rgb(0, 0, 0); 
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.cart-buttons {
+  display: flex;
+  flex-direction: column; /* Размещает кнопки по обе стороны */
+  margin-top: 10px; /* Отступ сверху */
 }
 
 .remove-btn {
@@ -777,19 +812,6 @@ color: #94a3b8;
 /* form end */
 
 
-/* basket */
-
-.title-litle{
-  font-weight: 600;
-font-size: 30px;
-}
-
-#basket-items li {
-  color: black;
-}
-/* basket */
-
-
 
 .dropdown-menu {
   width: 80px;
@@ -803,3 +825,45 @@ font-size: 30px;
 .dropdown-item:hover {
   background-color: #495057;
 }
+
+.btn-border {
+  border: 1px solid #0152fe;
+  border-radius: 8px;
+  color: white;
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-border:hover {
+  background-color: #0152fe;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(1, 82, 254, 0.3);
+}
+
+/* balance  start*/
+
+.card-price-balance{
+font-weight: 500;
+font-size: 32px;
+}
+
+.card-progress-balance{
+  font-size: 14px;
+line-height: 200%;
+}
+
+.custom-input {
+  border: none;
+  border-bottom: 1px solid #b1b1b1;
+  border-radius: 0;
+  background-color: transparent;
+  outline: none;
+  box-shadow: none;
+  font-weight: 400;
+font-size: 56px;
+}
+
+.custom-input:focus {
+  border-bottom-color: #0152fe;
+}
+

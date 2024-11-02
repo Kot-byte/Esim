@@ -16,20 +16,24 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/simka.png" type="image/x-icon">
     <title>eSIM by Raccoon Shop</title>
 </head>
 <style>
-     .card {
-            background: #1460d1; /* Цвет фона карточки */
-            border-radius: 8px; /* Радиус границы */
-            width: 327px; /* Ширина карточки */
-            height: 189px; /* Высота карточки */
-            color: #ffffff; /* Цвет текста */
-            display: flex; /* Используем flex для центрирования текста */
-            align-items: center; /* Центрируем по вертикали */
-            justify-content: center; /* Центрируем по горизонтали */
-            margin: 20px; /* Отступ вокруг карточки */
-        }
+.card-balance {
+    background-image: url('assets/images/Mask.png'); /* Добавляем изображение в качестве фона */
+    background-size: cover; /* Изображение заполняет всю карточку */
+    background-position: center; /* Центрируем изображение */
+    border-radius: 20px;
+    width: 327px;
+    height: 189px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 20px;
+}
+
 </style>
 <body>
 
@@ -38,15 +42,16 @@
             <div class="d-flex justify-content-between align-items-center">
 
                 <p class="mb-0 flex-grow-1">
-                    <a href="#" class="raccoon-btn">
+                    <a href="#" class="raccoon-btn raccoon-btn-little">
                         eSIM by Raccoon Shop
                         <img src="assets/images/telegram.svg" alt="Telegram Icon" class="ms-2">
                     </a>
                 </p>
                 <div class="d-flex align-items-center">
-                    <a href="#" class="text-white me-4">
-                        <i class="fas fa-shopping-cart"></i> 
-                    </a>
+                    <div class="profile-icon me-4" id="cart-icon">
+                        <i class="fa fa-shopping-cart text-white"></i>
+                        <span id="cart-count" class="badge bg-blue">0</span>
+                    </div>
                     <a href="#" class="text-white me-4">
                         <i class="fas fa-bell"></i> 
                     </a>
@@ -60,29 +65,44 @@
                 </div>
             </div>
         </div>
+
+        <div id="cart-panel" class="hidden" style="display: none;">
+            <i class="fas fa-times position-absolute top-0 end-0 m-2" id="close-icon" style="cursor: pointer; font-size: 1.2rem; color: #1460d1;"></i>
+            <h3 class="text-center text-white mb-3">Basket</h3>
+            <hr>
+            <ul id="cart-items"></ul>
+        
+            <div class="cart-buttons">
+                <button id="go-to-cart" class="start-btn m-2">Go to basket</button>
+                <button id="close-cart" class="m-2">Close</button>
+            </div>
+        </div>
+        
     </header>
     
     
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <div class="card">
-                    <h5 class="card-title">My Balance $32,761.65</h5>
+                <div class="card-balance p-4">
+                    <h5 class="card-title-balance">My Balance</h5>
+                    <p class="card-price-balance">$32,761.65</p>
+                    <p class="card-progress-balance">
+                        <i class="fas fa-arrow-trend-up"></i> $1,896
+                    </p>
                 </div>
                 <div class="form-container">
-                    <h5 class="text-center">Пополнение баланса</h5>
                     <form>
                         <div class="mb-3">
-                            <label for="zip-code" class="form-label">Введите код:</label>
-                            <input type="text" id="zip-code" class="form-control" placeholder="Введите код">
+                            <input type="text" id="zip-code" class="custom-input" placeholder="ETH200">
                         </div>
+                        
                         <div class="mb-3 text-center">
-                            <h6>Быстрое пополнение:</h6>
                             <button type="button" class="btn btn-outline-secondary btn-sm">+$10</button>
                             <button type="button" class="btn btn-outline-secondary btn-sm">+$20</button>
                             <button type="button" class="btn btn-outline-secondary btn-sm">+$50</button>
                         </div>
-                        <button type="submit" class="btn btn-primary">Пополнить</button>
+                        <button type="submit" class="btn btn-primary">Top Up Balance</button>
                     </form>
                 </div>
             </div>
@@ -97,9 +117,109 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 <script src="assets/js/app.js"></script>
+
 <script>
 
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+    function addToCart(item) {
+        if (!cartItems.includes(item)) {
+            cartItems.unshift(item);
+            updateCartCount();
+            updateCartPanel();
+        }
+    }
+    
+    function updateCartCount() {
+        const cartCountElement = document.getElementById('cart-count');
+        cartCountElement.textContent = cartItems.length;
+    }
+    
+    function updateCartPanel() {
+        const cartPanel = document.getElementById('cart-panel');
+        const cartItemsList = document.getElementById('cart-items');
+        cartItemsList.innerHTML = '';
+    
+        // Проверка на наличие товаров в корзине
+        if (cartItems.length === 0) {
+            const emptyMessage = document.createElement('li');
+            emptyMessage.textContent = 'Your cart is empty.';
+            emptyMessage.style.textAlign = 'center';
+            emptyMessage.style.fontStyle = 'italic';
+            emptyMessage.style.color = 'gray';
+            emptyMessage.style.fontWeight = '300';
+            cartItemsList.appendChild(emptyMessage);
+        } else {
+            cartItems.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+    
+                const removeButton = document.createElement('button');
+                removeButton.className = 'remove-btn';
+                removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                removeButton.onclick = () => removeFromCart(item);
+    
+                li.appendChild(removeButton);
+                cartItemsList.appendChild(li);
+            });
+        }
+    
+        cartPanel.classList.toggle('hidden', cartItems.length === 0);
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+    
+    function removeFromCart(item) {
+        cartItems = cartItems.filter(cartItem => cartItem !== item);
+        updateCartCount();
+        updateCartPanel();
+    }
+    
+    window.onload = function() {
+        updateCartCount();
+        updateCartPanel();
+    }
+    
+    document.getElementById('close-cart').addEventListener('click', () => {
+        document.getElementById('cart-panel').style.display = 'none';
+    });
+    
+    document.getElementById('go-to-cart').addEventListener('click', () => {
+        window.location.href = 'basket.html';
+    });
+    
+    document.getElementById('cart-icon').addEventListener('click', () => {
+        const cartPanel = document.getElementById('cart-panel');
+        cartPanel.style.display = (cartPanel.style.display === 'block') ? 'none' : 'block';
+    });
+    
+    document.querySelectorAll('.btn-basket').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const packageCard = event.target.closest('.card-package');
+            const packageTitle = packageCard.querySelector('.package-card-title').textContent;
+            const priceOptions = packageCard.querySelectorAll('.price-card');
+            let isOptionSelected = false;
+    
+            priceOptions.forEach(option => {
+                const checkbox = option.querySelector('.custom-checkbox');
+                if (checkbox && checkbox.checked) {
+                    const priceText = option.querySelector('.card-title-little').textContent;
+                    const monthsText = option.querySelector('.card-text-months').textContent; 
+                    addToCart(`${packageTitle} - ${priceText} (${monthsText})`); 
+                    isOptionSelected = true;
+                }
+            });
+    
+            if (!isOptionSelected) {
+                const priceElement = packageCard.querySelector('.card-price');
+                const priceText = priceElement ? priceElement.textContent.trim() : 'Нет цены';
+                addToCart(`${packageTitle} - ${priceText}`);
+            }
+        });
+    });
+    
+    
+        </script>
 
-</script>
 
 </html>

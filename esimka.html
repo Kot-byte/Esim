@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/simka.png" type="image/x-icon">
     <title>eSIM by Raccoon Shop</title>
 </head>
 
@@ -26,7 +27,7 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <p class="mb-0 flex-grow-1">
-                    <a href="#" class="raccoon-btn">
+                    <a href="#" class="raccoon-btn raccoon-btn-little">
                         eSIM by Raccoon Shop
                         <img src="assets/images/telegram.svg" alt="Telegram Icon" class="ms-2">
                     </a>
@@ -51,13 +52,17 @@
         </div>
 
         <div id="cart-panel" class="hidden" style="display: none;">
+            <i class="fas fa-times position-absolute top-0 end-0 m-2" id="close-icon" style="cursor: pointer; font-size: 1.2rem; color: #1460d1;"></i>
             <h3 class="text-center text-white mb-3">Basket</h3>
+            <hr>
             <ul id="cart-items"></ul>
-
-            <button id="go-to-cart" class="start-btn m-3">Go to basket</button>
-            <button id="close-cart">Close</button>
-
+        
+            <div class="cart-buttons">
+                <button id="go-to-cart" class="start-btn m-2">Go to basket</button>
+                <button id="close-cart" class="m-2">Close</button>
+            </div>
         </div>
+        
         
 
     </header>
@@ -66,7 +71,7 @@
     
     <section class="section packages">
         <div class="container text-center py-5">
-            <h2 class="title mb-4">Discover Worldwide eSIM Packages</h2>
+            <h2 class="title-h2 mb-4">Discover Worldwide eSIM Packages</h2>
             <p class="desc mb-5">Simple, transparent pricing that grows with you. Try any plan free for 30 days</p>
 
 
@@ -105,9 +110,23 @@
                                         <p class="package-card-title-grey mb-4">Unlimited Plus</p>
                                         <hr class="mb-5">
                                         <ul class="list-unstyled-package mb-5">
-                                            <li>Unlimited Talk & Text</li>
-                                            <li>Data speeds reduce after 40GB but data is unlimited</li>
-                                            <li>Unlimited International Minutes and Texts to 100 Countries</li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited Talk & Text
+                                            </li>
+
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Data speeds reduce after 40GB but data is unlimited
+                                            </li>
+
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited International Minutes and Texts to 100 Countries
+                                            </li>
                                         </ul>
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn" data-plan="Unlimited Plus" data-price="24.50">Add to basket</a>
@@ -127,9 +146,23 @@
                                         <p class="package-card-title-grey mb-4">Unlimited Pro</p>
                                         <hr class="mb-5">
                                         <ul class="list-unstyled-package mb-5">
-                                            <li>Unlimited Talk & Text</li>
-                                            <li>Data speeds reduce after 40GB but data is unlimited</li>
-                                            <li>Unlimited International Minutes and Texts to 100 Countries</li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited Talk & Text
+                                            </li>
+
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Data speeds reduce after 40GB but data is unlimited
+                                            </li>
+
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited International Minutes and Texts to 100 Countries
+                                            </li>
                                         </ul>
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
@@ -147,10 +180,22 @@
                                                 class="card-desc-price">/month</span></h5>
                                         <p class="package-card-title-grey mb-4">$15 Plan</p>
                                         <hr class="mb-5">
-                                        <ul class="list-unstyled-package mb-5">
-                                            <li>500 MB data only</li>
-                                            <li>Unlimited national calls and SMS</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
+                                       <ul class="list-unstyled-package mb-5">
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                500 MB data only
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited national calls and SMS
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited international talk & text to 100 countries
+                                            </li>
                                         </ul>
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
@@ -161,6 +206,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row mb-5">
                             <div class="col-md-4">
                                 <div class="card-package mb-3">
@@ -172,9 +218,21 @@
                                         <p class="package-card-title-grey mb-4">$19 Unlimited International Plan</p>
                                         <hr class="mb-5">
                                         <ul class="list-unstyled-package mb-5">
-                                            <li>3GB data at up to 5G speeds</li>
-                                            <li>Unlimited nationwide talk & text</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                3GB data at up to 5G speeds
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited nationwide talk & text
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited international talk & text to 100 countries
+                                            </li>
                                         </ul>
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
@@ -192,11 +250,21 @@
                                                 class="card-desc-price">/month</span></h5>
                                         <p class="package-card-title-grey mb-4">$23 Unlimited International Plan</p>
                                         <hr class="mb-5">
-                                        <ul class="list-unstyled-package mb-5">
-                                            <li>5GB data at up to 5G speeds</li>
-                                            <li>Unlimited nationwide talk & text</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
-                                        </ul>
+                                       <ul class="list-unstyled-package mb-5">
+    <li class="d-flex align-items-center mb-2">
+        <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+        5GB data at up to 5G speeds
+    </li>
+    <li class="d-flex align-items-center mb-2">
+        <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+        Unlimited nationwide talk & text
+    </li>
+    <li class="d-flex align-items-center mb-2">
+        <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+        Unlimited international talk & text to 100 countries
+    </li>
+</ul>
+
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
                                             <a href="#" class="btn-buy btn">Activate Today!</a>
@@ -215,10 +283,20 @@
                                         <p class="package-card-title-grey mb-4">$29 Unlimited International Plan</p>
                                         <hr class="mb-5">
                                         <ul class="list-unstyled-package mb-5">
-                                            <li>10GB data at up to 5G speeds</li>
-                                            <li>Unlimited nationwide talk & text</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                10GB data at up to 5G speeds
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited nationwide talk & text
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited international talk & text to 100 countries
+                                            </li>
                                         </ul>
+                                        
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
                                             <a href="#" class="btn-buy btn">Activate Today!</a>
@@ -239,10 +317,20 @@
                                         <p class="package-card-title-grey mb-4">$33 High Data Plan</p>
                                         <hr class="mb-5">
                                         <ul class="list-unstyled-package mb-5">
-                                            <li>12GB data at up to 5G speeds</li>
-                                            <li>Unlimited nationwide talk & text</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                12GB data at up to 5G speeds
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited nationwide talk & text
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited international talk & text to 100 countries
+                                            </li>
                                         </ul>
+                                        
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
                                             <a href="#" class="btn-buy btn">Activate Today!</a>
@@ -259,11 +347,21 @@
                                                 class="card-desc-price">/month</span></h5>
                                         <p class="package-card-title-grey mb-4">$39 Unlimited International Plan</p>
                                         <hr class="mb-5">
-                                        <ul class="list-unstyled-package mb-5">
-                                            <li>15GB data at up to 5G speeds</li>
-                                            <li>Unlimited nationwide talk & text</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
-                                        </ul>
+                                       <ul class="list-unstyled-package mb-5">
+    <li class="d-flex align-items-center mb-2">
+        <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+        15GB data at up to 5G speeds
+    </li>
+    <li class="d-flex align-items-center mb-2">
+        <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+        Unlimited nationwide talk & text
+    </li>
+    <li class="d-flex align-items-center mb-2">
+        <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+        Unlimited international talk & text to 100 countries
+    </li>
+</ul>
+
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
                                             <a href="#" class="btn-buy btn">Activate Today!</a>
@@ -331,9 +429,23 @@
                                         </div>
                                         <hr class="mb-5">
                                         <ul class="list-unstyled-package mb-5">
-                                            <li>Unlimited Talk & Text</li>
-                                            <li>Data speeds reduce after 40GB but data is unlimited</li>
-                                            <li>Unlimited International Minutes and Texts to 100 Countries</li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited Talk & Text
+                                            </li>
+
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Data speeds reduce after 40GB but data is unlimited
+                                            </li>
+
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited International Minutes and Texts to 100 Countries
+                                            </li>
                                         </ul>
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
@@ -393,9 +505,23 @@
                                         </div>
                                         <hr class="mb-5">
                                         <ul class="list-unstyled-package mb-5">
-                                            <li>Unlimited Talk & Text</li>
-                                            <li>Data speeds reduce after 40GB but data is unlimited</li>
-                                            <li>Unlimited International Minutes and Texts to 100 Countries</li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited Talk & Text
+                                            </li>
+
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Data speeds reduce after 40GB but data is unlimited
+                                            </li>
+
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited International Minutes and Texts to 100 Countries
+                                            </li>
                                         </ul>
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
@@ -455,10 +581,22 @@
                                             </div>
                                         </div>
                                         <hr class="mb-5">
-                                        <ul class="list-unstyled-package mb-5">
-                                            <li>500 MB data only</li>
-                                            <li>Unlimited national calls and SMS</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
+                                       <ul class="list-unstyled-package mb-5">
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                500 MB data only
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited national calls and SMS
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited international talk & text to 100 countries
+                                            </li>
                                         </ul>
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
@@ -521,9 +659,21 @@
                                         </div>
                                         <hr class="mb-5">
                                         <ul class="list-unstyled-package mb-5">
-                                            <li>3GB data at up to 5G speeds</li>
-                                            <li>Unlimited nationwide talk & text</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                3GB data at up to 5G speeds
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited nationwide talk & text
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check"
+                                                    class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited international talk & text to 100 countries
+                                            </li>
                                         </ul>
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
@@ -580,11 +730,21 @@
                                             </div>
                                         </div>
                                         <hr class="mb-5">
-                                        <ul class="list-unstyled-package mb-5">
-                                            <li>5GB data at up to 5G speeds</li>
-                                            <li>Unlimited nationwide talk & text</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
-                                        </ul>
+                                       <ul class="list-unstyled-package mb-5">
+    <li class="d-flex align-items-center mb-2">
+        <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+        5GB data at up to 5G speeds
+    </li>
+    <li class="d-flex align-items-center mb-2">
+        <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+        Unlimited nationwide talk & text
+    </li>
+    <li class="d-flex align-items-center mb-2">
+        <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+        Unlimited international talk & text to 100 countries
+    </li>
+</ul>
+
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
                                             <a href="#" class="btn-buy btn">Activate Today!</a>
@@ -642,10 +802,20 @@
                                         </div>
                                         <hr class="mb-5">
                                         <ul class="list-unstyled-package mb-5">
-                                            <li>10GB data at up to 5G speeds</li>
-                                            <li>Unlimited nationwide talk & text</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                10GB data at up to 5G speeds
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited nationwide talk & text
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited international talk & text to 100 countries
+                                            </li>
                                         </ul>
+                                        
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
                                             <a href="#" class="btn-buy btn">Activate Today!</a>
@@ -706,10 +876,20 @@
                                         </div>
                                         <hr class="mb-5">
                                         <ul class="list-unstyled-package mb-5">
-                                            <li>12GB data at up to 5G speeds</li>
-                                            <li>Unlimited nationwide talk & text</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                12GB data at up to 5G speeds
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited nationwide talk & text
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited international talk & text to 100 countries
+                                            </li>
                                         </ul>
+                                        
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
                                             <a href="#" class="btn-buy btn">Activate Today!</a>
@@ -767,10 +947,20 @@
                                         </div>
                                         <hr class="mb-5">
                                         <ul class="list-unstyled-package mb-5">
-                                            <li>15GB data at up to 5G speeds</li>
-                                            <li>Unlimited nationwide talk & text</li>
-                                            <li>Unlimited international talk & text to 100 countries</li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                15GB data at up to 5G speeds
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited nationwide talk & text
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="assets/images/ok-pack.svg" alt="check" class="text-primary me-2" style="width: 20px; height: 20px;">
+                                                Unlimited international talk & text to 100 countries
+                                            </li>
                                         </ul>
+                                        
                                         <div class="d-flex justify-content-between mt-3">
                                             <a href="#" class="btn-basket btn">Add to basket</a>
                                             <a href="#" class="btn-buy btn">Activate Today!</a>
@@ -792,7 +982,7 @@
 
     <section class="section devices">
         <div class="container text-center py-5">
-            <h2 class="title mb-4">Compatible with Your Favorite Devices</h2>
+            <h2 class="title-h2 mb-4">Compatible with Your Favorite Devices</h2>
             <p class="desc mb-5">Check out the list of eSIM-compatible devices</p>
 
             <div class="container pt-4">
@@ -1082,20 +1272,31 @@ function updateCartPanel() {
     const cartItemsList = document.getElementById('cart-items');
     cartItemsList.innerHTML = '';
 
-    cartItems.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
+    // Проверка на наличие товаров в корзине
+    if (cartItems.length === 0) {
+        const emptyMessage = document.createElement('li');
+        emptyMessage.textContent = 'Your cart is empty.';
+        emptyMessage.style.textAlign = 'center';
+        emptyMessage.style.fontStyle = 'italic';
+        emptyMessage.style.color = 'gray';
+        emptyMessage.style.fontWeight = '300';
+        cartItemsList.appendChild(emptyMessage);
+    } else {
+        cartItems.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
 
-        const removeButton = document.createElement('button');
-        removeButton.className = 'remove-btn';
-        removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-        removeButton.onclick = () => removeFromCart(item);
+            const removeButton = document.createElement('button');
+            removeButton.className = 'remove-btn';
+            removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+            removeButton.onclick = () => removeFromCart(item);
 
-        li.appendChild(removeButton);
-        cartItemsList.appendChild(li);
-    });
+            li.appendChild(removeButton);
+            cartItemsList.appendChild(li);
+        });
+    }
 
-    cartPanel.classList.toggle('hidden');
+    cartPanel.classList.toggle('hidden', cartItems.length === 0);
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
 
@@ -1135,8 +1336,8 @@ document.querySelectorAll('.btn-basket').forEach(button => {
             const checkbox = option.querySelector('.custom-checkbox');
             if (checkbox && checkbox.checked) {
                 const priceText = option.querySelector('.card-title-little').textContent;
-                const monthsText = option.querySelector('.card-text-months').textContent; // Получаем текст с месяцами
-                addToCart(`${packageTitle} - ${priceText} (${monthsText})`); // Добавляем месяцы в строку
+                const monthsText = option.querySelector('.card-text-months').textContent; 
+                addToCart(`${packageTitle} - ${priceText} (${monthsText})`); 
                 isOptionSelected = true;
             }
         });
@@ -1148,6 +1349,7 @@ document.querySelectorAll('.btn-basket').forEach(button => {
         }
     });
 });
+
 
     </script>
     
