@@ -209,22 +209,22 @@ background: rgba(255, 255, 255, 0.11);
 
                 // Создаём элемент для названия товара
                 const itemText = document.createElement('span');
-                itemText.className = 'item-name'; // Класс для стилизации названия товара
-                itemText.textContent = item; // Добавляем название товара
-                planLabel.appendChild(itemText); // Добавляем название к плану
+                itemText.className = 'item-name'; 
+                itemText.textContent = item; 
+                planLabel.appendChild(itemText); 
 
-                li.appendChild(planLabel); // Добавляем элемент с текстом в li
+                li.appendChild(planLabel); 
 
                 // Создаём кнопку удаления
                 const removeButton = document.createElement('button');
                 removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-                removeButton.className = 'btn-remove'; // Используем класс для стилизации
+                removeButton.className = 'btn-remove'; 
                 removeButton.onclick = () => {
                     removeFromCart(item);
                 };
 
-                li.appendChild(removeButton); // Добавляем кнопку удаления к элементу списка
-                basketItemsList.appendChild(li); // Добавляем элемент списка в корзину
+                li.appendChild(removeButton); 
+                basketItemsList.appendChild(li); 
 
                 // Извлекаем цену из названия товара и суммируем
                 const priceMatch = item.match(/-\s*\$(\d+(\.\d{1,2})?)/);
@@ -259,11 +259,11 @@ background: rgba(255, 255, 255, 0.11);
         const checkIcon = document.getElementById('check-icon');
 
         if (zipCodeInput.value.trim() !== '') {
-            checkIcon.style.color = 'green'; // Зелёный, если что-то введено
-            zipCodeInput.style.borderBottomColor = 'green'; // Зелёный нижний бордер
+            checkIcon.style.color = 'green';
+            zipCodeInput.style.borderBottomColor = 'green';
         } else {
-            checkIcon.style.color = '#767676'; // Серый, если пусто
-            zipCodeInput.style.borderBottomColor = '#b1b1b1'; // Серый нижний бордер
+            checkIcon.style.color = '#767676'; 
+            zipCodeInput.style.borderBottomColor = '#b1b1b1'; 
         }
     }
     </script>

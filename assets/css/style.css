@@ -430,17 +430,6 @@ color: #a1a1aa;
     margin-bottom: 5px; 
 }
 
-/* .list-unstyled-package li::before {
-    content: ''; 
-    position: absolute; 
-    left: 0; 
-    top: 0; 
-    width: 16px; 
-    height: 16px;
-    background: url('../images/ok-pack.svg') no-repeat center center; 
-    background-size: contain;
-} */
-
 .btn-basket {
   background: linear-gradient(#18181b, #18181b) padding-box, 
               linear-gradient(45deg, #6DDCFF, #7F60F9) border-box;
@@ -610,13 +599,13 @@ color: #fff;
 }
 
 .scrollable-card::-webkit-scrollbar-track {
-  background: #10151b; /* Нежно-синий цвет для линии прокрутки */
+  background: #10151b; 
   border-radius: 10px;
 }
 
 .scrollable-card {
   scrollbar-width: thin;
-  scrollbar-color: #007bff #10151b; /* Цвет ползунка и фона */
+  scrollbar-color: #007bff #10151b; 
 }
 
 .start1-btn {
