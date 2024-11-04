@@ -58,7 +58,7 @@
             <ul id="cart-items"></ul>
         
             <div class="cart-buttons">
-                <button id="go-to-cart" class="start-btn m-2">Go to basket</button>
+                <button id="go-to-cart" class="blue-btn m-2">Go to basket</button>
                 <button id="close-cart" class="m-2">Close</button>
             </div>
         </div>
@@ -1315,6 +1315,10 @@ document.getElementById('close-cart').addEventListener('click', () => {
     document.getElementById('cart-panel').style.display = 'none';
 });
 
+document.getElementById('close-icon').addEventListener('click', () => {
+        document.getElementById('cart-panel').style.display = 'none';
+    });
+    
 document.getElementById('go-to-cart').addEventListener('click', () => {
     window.location.href = 'basket.html';
 });

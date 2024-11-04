@@ -177,6 +177,16 @@ body {
   background-color: #141a21;
 }
 
+.blue-btn {
+  border: none; 
+  border-radius: 8px;
+  background: #0b66f2;
+  font-weight: 500;
+  color: #fff;
+  padding: 12px 20px;
+  transition: background 0.3s ease;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -850,20 +860,5 @@ font-size: 32px;
 .card-progress-balance{
   font-size: 14px;
 line-height: 200%;
-}
-
-.custom-input {
-  border: none;
-  border-bottom: 1px solid #b1b1b1;
-  border-radius: 0;
-  background-color: transparent;
-  outline: none;
-  box-shadow: none;
-  font-weight: 400;
-font-size: 56px;
-}
-
-.custom-input:focus {
-  border-bottom-color: #0152fe;
 }
 

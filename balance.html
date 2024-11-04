@@ -21,9 +21,9 @@
 </head>
 <style>
 .card-balance {
-    background-image: url('assets/images/Mask.png'); /* Добавляем изображение в качестве фона */
-    background-size: cover; /* Изображение заполняет всю карточку */
-    background-position: center; /* Центрируем изображение */
+    background-image: url('assets/images/Mask.png'); 
+    background-size: cover; 
+    background-position: center;
     border-radius: 20px;
     width: 327px;
     height: 189px;
@@ -31,8 +31,31 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: flex-start;
     margin: 20px;
 }
+
+.custom-input {
+        color: white;
+        font-size: 35px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: 150px;
+  border-bottom: 1px solid #b1b1b1;
+  background-color: transparent;
+  outline: none;
+    }
+
+    .custom-input:focus {
+  border-bottom-color: #0152fe;
+}
+
+    .custom-btn:hover {
+        background-color: blue; 
+        color: white;
+        border-color: blue;
+    }
 
 </style>
 <body>
@@ -73,7 +96,7 @@
             <ul id="cart-items"></ul>
         
             <div class="cart-buttons">
-                <button id="go-to-cart" class="start-btn m-2">Go to basket</button>
+                <button id="go-to-cart" class="blue-btn m-2">Go to basket</button>
                 <button id="close-cart" class="m-2">Close</button>
             </div>
         </div>
@@ -81,29 +104,58 @@
     </header>
     
     
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card-balance p-4">
-                    <h5 class="card-title-balance">My Balance</h5>
-                    <p class="card-price-balance">$32,761.65</p>
-                    <p class="card-progress-balance">
-                        <i class="fas fa-arrow-trend-up"></i> $1,896
-                    </p>
+    <div class="container-fluid text-center py-5">
+        <div class="container"> 
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card-balance p-4 text-center mx-auto">
+                        <h5 class="card-title-balance">My Balance</h5>
+                        <p class="card-price-balance">$32,761.65</p>
+                        <p class="card-progress-balance">
+                            <i class="fas fa-arrow-trend-up"></i> $1,896
+                        </p>
+                    </div>
+                    <div class="form-container py-5">
+                        <form>
+                            <div class="mb-4">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span style="margin-right: 5px; color: rgb(151, 151, 151); font-size: 30px;">ETH</span>
+                                    <input type="text" id="zip-code" class="custom-input text-center" placeholder="200" inputmode="numeric">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3 text-center mb-5">
+                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm">+$10</button>
+                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm">+$20</button>
+                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm">+$30</button>
+                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm">+$40</button>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Top Up Balance</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-container">
-                    <form>
-                        <div class="mb-3">
-                            <input type="text" id="zip-code" class="custom-input" placeholder="ETH200">
+                
+                <div class="col-md-6">
+                    <div class="eSIM-container p-4 text-start">
+                        <h5 class="mb-3" style="font-size: 30px;">My eSIM</h5>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#active-eSIMs">Active eSIMs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#inactive-eSIMs">Inactive eSIMs</a>
+                            </li>
+                        </ul>
+                        <hr>
+                        <div class="tab-content mt-3">
+                            <div class="tab-pane fade show active" id="active-eSIMs">
+                                <p>Empty</p>
+                            </div>
+                            <div class="tab-pane fade" id="inactive-eSIMs">
+                                <p>Empty</p>
+                            </div>
                         </div>
-                        
-                        <div class="mb-3 text-center">
-                            <button type="button" class="btn btn-outline-secondary btn-sm">+$10</button>
-                            <button type="button" class="btn btn-outline-secondary btn-sm">+$20</button>
-                            <button type="button" class="btn btn-outline-secondary btn-sm">+$50</button>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Top Up Balance</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -182,6 +234,10 @@
     document.getElementById('close-cart').addEventListener('click', () => {
         document.getElementById('cart-panel').style.display = 'none';
     });
+
+    document.getElementById('close-icon').addEventListener('click', () => {
+        document.getElementById('cart-panel').style.display = 'none';
+    });
     
     document.getElementById('go-to-cart').addEventListener('click', () => {
         window.location.href = 'basket.html';
@@ -218,6 +274,11 @@
         });
     });
     
+
+    const zipCodeInput = document.getElementById('zip-code');
+    zipCodeInput.addEventListener('input', function (e) {
+        this.value = this.value.replace(/\D/g, ''); 
+    });
     
         </script>
 
