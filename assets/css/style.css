@@ -196,6 +196,10 @@ img {
 .section{
     margin-bottom: 140px;
 }
+
+.btn-size{
+  width: 300px;
+}
 /* home start */
 
 header {
@@ -800,8 +804,8 @@ background: #191e25;
 
 .cart-buttons {
   display: flex;
-  flex-direction: column; /* Размещает кнопки по обе стороны */
-  margin-top: 10px; /* Отступ сверху */
+  flex-direction: column; 
+  margin-top: 10px; 
 }
 
 .remove-btn {
@@ -862,3 +866,38 @@ font-size: 32px;
 line-height: 200%;
 }
 
+@media (max-width: 720px) {
+  .border-right-custom::before {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: rgba(185, 194, 211, 0.1);
+}
+
+
+  .border-right-custom::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    background: rgba(185, 194, 211, 0.1); 
+}
+}
+
+@media (max-width: 470px){
+  #cart-panel{
+  width: auto;
+}
+}
+
+@media (max-width: 450px){
+  .btn-size{
+  width: 150px;
+}
+
+}
