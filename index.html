@@ -1545,6 +1545,9 @@
     </section>
 
 
+
+      
+
     <footer>
         <div class="container">
             <div class="row">
@@ -1604,16 +1607,56 @@
     crossorigin="anonymous"></script>
 <script src="assets/js/app.js"></script>
 
-
-<!-- <script>
-    document.getElementById("sp-b3a64892-2f01-414e-b236-8ca371117e41").addEventListener("click", function (event) {
-        event.preventDefault(); 
-
-        window.location.href = "https://kot-byte.github.io/Esim/form.html";
+<script>
+    async function getAccessToken() {
+    const response = await fetch('https://api.sendpulse.com/oauth/access_token', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            grant_type: 'client_credentials',
+            client_id: '0b629c315744087985f430229e271200',
+            client_secret: '6bb484c3d2af96a0826f6c391e263734',
+        }),
     });
-</script> -->
+    const data = await response.json();
+    return data.access_token;
+}
 
+async function checkEmailInContacts(email) {
+    const token = await getAccessToken();
+    const response = await fetch(`https://api.sendpulse.com/addressbooks/emails/search?email=${email}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+    const data = await response.json();
+    return data.result !== null; // true, если контакт найден, иначе false
+}
 
+document.querySelector("form").addEventListener("submit", async function(event) {
+    event.preventDefault(); // Останавливаем отправку формы
 
+    const emailInput = document.querySelector("input[type='email']");
+    const email = emailInput.value;
+
+    try {
+        const exists = await checkEmailInContacts(email);
+        
+        if (exists) {
+            alert("Этот email уже зарегистрирован. Мы отправили вам повторное письмо.");
+            // Здесь можно вызвать функцию для повторной отправки письма, если нужно
+        } else {
+            // Продолжите с отправкой данных формы в SendPulse
+            event.target.submit(); // Отправка формы
+        }
+    } catch (error) {
+        console.error("Ошибка проверки email:", error);
+    }
+});
+
+</script>
 
 </html>
