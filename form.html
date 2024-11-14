@@ -7,12 +7,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/images/simka.png" type="image/x-icon">
@@ -20,11 +17,9 @@
 </head>
 
 <script type="module">
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
   import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 
-  // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyAhHlWn9A7KUyzWpPTcpHP6M6XyZtpo-u0",
     authDomain: "esim-df27b.firebaseapp.com",
@@ -35,20 +30,17 @@
     measurementId: "G-97TL7HT82Z"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // Function to handle email submission
   function sendSignInLink(email) {
     const actionCodeSettings = {
-      url: 'https://kot-byte.github.io/Esim/akk.html', // Correct URL
+      url: 'https://kot-byte.github.io/Esim/akk.html',
       handleCodeInApp: true
     };
 
     sendSignInLinkToEmail(auth, email, actionCodeSettings)
       .then(() => {
-        // The link was successfully sent. Inform the user.
         window.localStorage.setItem('emailForSignIn', email);
         alert("A sign-in link has been sent to your email.");
       })
@@ -61,7 +53,6 @@
       });
   }
 
-  // Event listener for form submission
   document.getElementById("authForm").addEventListener("submit", function(event) {
     event.preventDefault();
     const email = document.getElementById("email").value;
@@ -76,7 +67,6 @@
     sendSignInLink(email);
   });
 
-  // Check if the user is returning from a link and handle sign-in
   if (isSignInWithEmailLink(auth, window.location.href)) {
     const email = window.localStorage.getItem('emailForSignIn');
     if (email) {
@@ -180,14 +170,12 @@
                     </div>
 
                     <button type="submit">Send Sign-In Link</button>
+
                     <p id="error" class="error"></p>
                 </form>
             </div>
         </div>
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/app.js"></script>
 </body>
 
 </html>
