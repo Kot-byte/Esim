@@ -21,91 +21,27 @@
 </head>
 
 <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyAhHlWn9A7KUyzWpPTcpHP6M6XyZtpo-u0",
-      authDomain: "esim-df27b.firebaseapp.com",
-      projectId: "esim-df27b",
-      storageBucket: "esim-df27b.firebasestorage.app",
-      messagingSenderId: "304347730267",
-      appId: "1:304347730267:web:80a734df6aa27211f2ca7e",
-      measurementId: "G-97TL7HT82Z"
-    };
-  
-    // Инициализация Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-  
-    // Получаем элементы формы и ошибки
-    const authForm = document.getElementById("authForm");
-    const emailInput = document.getElementById("email");
-    const errorElement = document.getElementById("error");
-  
-    // Проверка чекбокса для активации кнопки
-    const termsCheckbox = document.getElementById('termsCheckbox');
-    const submitButton = document.getElementById('submitButton');
-    termsCheckbox.addEventListener('change', function () {
-      submitButton.disabled = !termsCheckbox.checked;
-    });
-  
-    // Обработчик формы для отправки ссылки
-    authForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      const email = emailInput.value;
-  
-      const actionCodeSettings = {
-        // Указываем нужную страницу, куда пользователь будет перенаправлен после входа
-        url: "https://kot-byte.github.io/Esim/akk.html",
-        handleCodeInApp: true, // Обработка кода в приложении
-      };
-  
-      // Отправка ссылки для входа
-      sendSignInLinkToEmail(auth, email, actionCodeSettings)
-        .then(() => {
-          // Сохраняем email в localStorage
-          window.localStorage.setItem('emailForSignIn', email);
-          alert("Мы отправили вам ссылку для входа на почту!");
-        })
-        .catch((error) => {
-          const errorMessage = error.message;
-          console.error(errorMessage); // Логирование ошибки в консоль для отладки
-          errorElement.textContent = errorMessage; // Отображение ошибки на странице
-          errorElement.style.display = 'block'; // Показываем элемент ошибки
-        });
-    });
-  
-    // Проверка, если пользователь возвращается по ссылке
-    if (isSignInWithEmailLink(auth, window.location.href)) {
-      const email = window.localStorage.getItem('emailForSignIn');
-      if (email) {
-        // Завершаем процесс входа
-        signInWithEmailLink(auth, email, window.location.href)
-          .then((result) => {
-            alert('Вы успешно вошли!');
-            // Перенаправляем на страницу с email
-            window.localStorage.removeItem('emailForSignIn');
-            window.location.href = "https://kot-byte.github.io/Esim/akk.html";
-          })
-          .catch((error) => {
-            const errorMessage = error.message;
-            errorElement.textContent = errorMessage;
-            errorElement.style.display = 'block';
-          });
-      }
-    }
-  </script>
-  
-  
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAhHlWn9A7KUyzWpPTcpHP6M6XyZtpo-u0",
+    authDomain: "esim-df27b.firebaseapp.com",
+    projectId: "esim-df27b",
+    storageBucket: "esim-df27b.firebasestorage.app",
+    messagingSenderId: "304347730267",
+    appId: "1:304347730267:web:80a734df6aa27211f2ca7e",
+    measurementId: "G-97TL7HT82Z"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
 
 <style>
-         #authForm {
+    #authForm {
       background-color: #10151b;
       padding: 30px;
       border-radius: 20px;
@@ -154,8 +90,8 @@
       color: red;
       margin-top: 10px;
     }
-
 </style>
+
 <body>
     <header class="py-4">
         <div class="container">
@@ -196,10 +132,9 @@
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/app.js"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-<script src="assets/js/app.js"></script>
-
 </html>
