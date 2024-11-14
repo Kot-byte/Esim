@@ -85,6 +85,8 @@
         signInWithEmailLink(auth, email, window.location.href)
           .then((result) => {
             alert('Вы успешно вошли!');
+            // Выводим email в консоль
+            console.log('Пользователь вошел, email:', email);
             window.location.href = "https://kot-byte.github.io/Esim/akk.html";
           })
           .catch((error) => {
