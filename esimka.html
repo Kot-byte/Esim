@@ -45,7 +45,10 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" href="esimka.html">Esimka</a></li>
-                        <li><a class="dropdown-item" href="index.html">Logout</a></li>
+                        <li id="user-email-container">
+                            <a class="dropdown-item" href="javascript:void(0);" id="user-email-link"></a>
+                        </li>
+                        <li><a class="dropdown-item" href="index.html" onclick="logout()">Logout</a></li>
                     </ul>
                 </div>
             </div>

@@ -83,7 +83,10 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" href="esimka.html">Esimka</a></li>
-                        <li><a class="dropdown-item" href="index.html">Logout</a></li>
+                        <li id="user-email-container">
+                            <a class="dropdown-item" href="javascript:void(0);" id="user-email-link"></a>
+                        </li>
+                        <li><a class="dropdown-item" href="index.html" onclick="logout()">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -125,10 +128,10 @@
                             </div>
                             
                             <div class="mb-3 text-center mb-5">
-                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm">+$10</button>
-                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm">+$20</button>
-                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm">+$30</button>
-                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm">+$40</button>
+                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm" onclick="setAmount(10)">+$10</button>
+                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm" onclick="setAmount(20)">+$20</button>
+                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm" onclick="setAmount(30)">+$30</button>
+                                <button type="button" class="btn custom-btn btn-outline-secondary btn-sm" onclick="setAmount(40)">+$40</button>
                             </div>
                             <button type="submit" class="btn btn-primary">Top Up Balance</button>
                         </form>
@@ -171,6 +174,10 @@
 <script src="assets/js/app.js"></script>
 
 <script>
+ function setAmount(amount) {
+        const input = document.getElementById("zip-code");
+        input.value = amount;
+    }
 
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     

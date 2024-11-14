@@ -31,6 +31,15 @@ cards.forEach((card) => {
 
 
 
+function logout() {
+    // Логика выхода пользователя
+    // Например, очистка токена аутентификации:
+    localStorage.removeItem('authToken');  // Удаление токена из хранилища
+    // Перенаправление на страницу входа или главную страницу
+    window.location.href = 'index.html';
+}
 
-
+function openFormPage() {
+    window.location.href = 'form.html';
+}
 
