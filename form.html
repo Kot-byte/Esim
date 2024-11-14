@@ -20,8 +20,7 @@
     <title>eSIM by Raccoon Shop</title>
 </head>
 
- <!-- Подключаем Firebase SDK через CDN для Firebase v9 и выше -->
- <script type="module">
+<script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
     import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
   
@@ -35,60 +34,68 @@
       appId: "1:1056006588999:web:cdab68f1f30b4c8cd7ff62",
       measurementId: "G-VWDZ6EQM8T"
     };
-
+  
     // Инициализация Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-
+  
     // Получаем элементы формы и ошибки
     const authForm = document.getElementById("authForm");
     const emailInput = document.getElementById("email");
     const errorElement = document.getElementById("error");
-
+  
+    // Проверка чекбокса для активации кнопки
+    const termsCheckbox = document.getElementById('termsCheckbox');
+    const submitButton = document.getElementById('submitButton');
+    termsCheckbox.addEventListener('change', function () {
+      submitButton.disabled = !termsCheckbox.checked;
+    });
+  
     // Обработчик формы для отправки ссылки
     authForm.addEventListener("submit", function (event) {
       event.preventDefault();
-
       const email = emailInput.value;
-
+  
       const actionCodeSettings = {
         // Указываем нужную страницу, куда пользователь будет перенаправлен после входа
         url: "https://kot-byte.github.io/Esim/akk.html",
         handleCodeInApp: true, // Обработка кода в приложении
       };
-
+  
       // Отправка ссылки для входа
       sendSignInLinkToEmail(auth, email, actionCodeSettings)
         .then(() => {
-          // Сохраняем email в localStorage, чтобы использовать его при подтверждении входа
+          // Сохраняем email в localStorage
           window.localStorage.setItem('emailForSignIn', email);
           alert("Мы отправили вам ссылку для входа на почту!");
         })
         .catch((error) => {
           const errorMessage = error.message;
-          errorElement.textContent = errorMessage;
+          console.error(errorMessage); // Логирование ошибки в консоль для отладки
+          errorElement.textContent = errorMessage; // Отображение ошибки на странице
+          errorElement.style.display = 'block'; // Показываем элемент ошибки
         });
     });
-
+  
     // Проверка, если пользователь возвращается по ссылке
     if (isSignInWithEmailLink(auth, window.location.href)) {
-      // Получаем email из localStorage
       const email = window.localStorage.getItem('emailForSignIn');
       if (email) {
         // Завершаем процесс входа
         signInWithEmailLink(auth, email, window.location.href)
           .then((result) => {
-            // Вход успешен, можно перенаправить пользователя на нужную страницу
             alert('Вы успешно вошли!');
             window.location.href = "https://kot-byte.github.io/Esim/akk.html";
           })
           .catch((error) => {
             const errorMessage = error.message;
             errorElement.textContent = errorMessage;
+            errorElement.style.display = 'block';
           });
       }
     }
   </script>
+  
 
 <style>
          #authForm {
@@ -181,9 +188,6 @@
             </div>
         </div>
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/app.js"></script>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
