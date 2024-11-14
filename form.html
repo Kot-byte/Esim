@@ -23,7 +23,7 @@
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -38,6 +38,46 @@
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Function to handle email submission
+  function sendSignInLink(email) {
+    const actionCodeSettings = {
+      // URL you want to redirect back to. The domain (www.example.com) for this
+      // project must be in the authorized domains list in the Firebase Console.
+      url: 'https://your-app.com/finishSignUp?cartId=1234', // Replace with your URL
+      handleCodeInApp: true
+    };
+
+    sendSignInLinkToEmail(auth, email, actionCodeSettings)
+      .then(() => {
+        // The link was successfully sent. Inform the user.
+        window.localStorage.setItem('emailForSignIn', email);
+        alert("A sign-in link has been sent to your email.");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error("Error sending sign-in link: ", errorCode, errorMessage);
+        document.getElementById("error").innerText = errorMessage;
+        document.getElementById("error").style.display = "block";
+      });
+  }
+
+  // Event listener for form submission
+  document.getElementById("authForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const termsChecked = document.getElementById("termsCheckbox").checked;
+    
+    if (!termsChecked) {
+      document.getElementById("error").innerText = "You must agree to the terms and conditions.";
+      document.getElementById("error").style.display = "block";
+      return;
+    }
+
+    sendSignInLink(email);
+  });
 </script>
 
 <style>
@@ -89,6 +129,7 @@
     .error {
       color: red;
       margin-top: 10px;
+      display: none;
     }
 </style>
 
@@ -126,7 +167,7 @@
                     </div>
 
                     <button type="submit">Send Sign-In Link</button>
-                    <p id="error" class="error" style="display:none; color:red;"></p>
+                    <p id="error" class="error"></p>
                 </form>
             </div>
         </div>
