@@ -4,10 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Firebase Authentication</title>
-  <!-- Подключаем Firebase SDK через CDN -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+  <!-- Подключаем Firebase SDK через CDN для Firebase v9 и выше -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+  
+    // Конфигурация Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCXwQvsp0uNKnNBUazQbfr9uRH-ZnIk0ow",
+      authDomain: "project-fb2b2.firebaseapp.com",
+      projectId: "project-fb2b2",
+      storageBucket: "project-fb2b2.firebasestorage.app",
+      messagingSenderId: "1056006588999",
+      appId: "1:1056006588999:web:cdab68f1f30b4c8cd7ff62",
+      measurementId: "G-VWDZ6EQM8T"
+    };
+
+    // Инициализация Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Получаем элементы формы и ошибки
+    const authForm = document.getElementById("authForm");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const errorElement = document.getElementById("error");
+
+    // Обработчик формы
+    authForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const email = emailInput.value;
+      const password = passwordInput.value;
+
+      // Попытка регистрации/входа
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert(`User signed up successfully: ${user.email}`);
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          errorElement.textContent = errorMessage;
+        });
+    });
+  </script>
 
   <style>
     body {
@@ -75,49 +116,6 @@
       <p id="error" class="error"></p>
     </form>
   </div>
-
-  <!-- Firebase Initialization -->
-  <script>
-    // Конфигурация Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyCXwQvsp0uNKnNBUazQbfr9uRH-ZnIk0ow",
-      authDomain: "project-fb2b2.firebaseapp.com",
-      projectId: "project-fb2b2",
-      storageBucket: "project-fb2b2.firebasestorage.app",
-      messagingSenderId: "1056006588999",
-      appId: "1:1056006588999:web:cdab68f1f30b4c8cd7ff62",
-      measurementId: "G-VWDZ6EQM8T"
-    };
-
-    // Инициализация Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-
-    // Получаем элементы формы и ошибки
-    const authForm = document.getElementById("authForm");
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
-    const errorElement = document.getElementById("error");
-
-    // Обработчик формы
-    authForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const email = emailInput.value;
-      const password = passwordInput.value;
-
-      // Попытка регистрации/входа
-      auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          alert(`User signed up successfully: ${user.email}`);
-        })
-        .catch((error) => {
-          const errorMessage = error.message;
-          errorElement.textContent = errorMessage;
-        });
-    });
-  </script>
 
 </body>
 </html>
