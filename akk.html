@@ -44,8 +44,12 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" href="esimka.html">Esimka</a></li>
-                        <li><a class="dropdown-item" href="index.html">Logout</a></li>
+                        <li id="user-email-container">
+                            <a class="dropdown-item" href="javascript:void(0);" id="user-email-link"></a>
+                        </li>
+                        <li><a class="dropdown-item" href="index.html" onclick="logout()">Logout</a></li>
                     </ul>
+                    
                 </div>
             </div>
         </div>
@@ -74,22 +78,28 @@
         </div>
     </div>
     
-    
-    <h1>Добро пожаловать!</h1>
-    <p>Ваш email: <span id="userEmail"></span></p>
-
     <script>
-        // Извлекаем email из localStorage
-        const email = window.localStorage.getItem('emailForSignIn');
-        if (email) {
-            // Отображаем email на странице
-            document.getElementById('userEmail').textContent = email;
-        } else {
-            // Если email не найден, можно показать сообщение об ошибке
-            document.getElementById('userEmail').textContent = 'Не удалось загрузить email.';
-        }
-    </script>
+       document.addEventListener("DOMContentLoaded", function () {
+    // Получаем email из localStorage, если он сохранен после входа
+    const email = window.localStorage.getItem('emailForSignIn');
     
+    // Если email существует, показываем его в меню
+    if (email) {
+        const emailLink = document.getElementById('user-email-link');
+        emailLink.textContent = email;  // Устанавливаем почту в текст ссылки
+        emailLink.href = "#";  // Можно добавить ссылку, если хотите
+    }
+});
+
+// Функция выхода из системы
+function logout() {
+    window.localStorage.removeItem('emailForSignIn');  // Удаляем email из localStorage
+    // Здесь можно добавить логику для выхода из Firebase или других систем аутентификации
+    window.location.href = 'index.html';  // Перенаправляем на страницу выхода
+}
+
+    </script>
+
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
