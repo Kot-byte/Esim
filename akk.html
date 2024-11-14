@@ -75,7 +75,21 @@
     </div>
     
     
+    <h1>Добро пожаловать!</h1>
+    <p>Ваш email: <span id="userEmail"></span></p>
 
+    <script>
+        // Извлекаем email из localStorage
+        const email = window.localStorage.getItem('emailForSignIn');
+        if (email) {
+            // Отображаем email на странице
+            document.getElementById('userEmail').textContent = email;
+        } else {
+            // Если email не найден, можно показать сообщение об ошибке
+            document.getElementById('userEmail').textContent = 'Не удалось загрузить email.';
+        }
+    </script>
+    
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
