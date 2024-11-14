@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,128 +13,76 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/images/simka.png" type="image/x-icon">
     <title>eSIM by Raccoon Shop</title>
-</head>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-  import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+    <!-- Переносим скрипт в конец файла или добавляем атрибут defer -->
+    <script type="module" defer>
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+      import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 
-  const firebaseConfig = {
-      apiKey: "AIzaSyCXwQvsp0uNKnNBUazQbfr9uRH-ZnIk0ow",
-      authDomain: "project-fb2b2.firebaseapp.com",
-      projectId: "project-fb2b2",
-      storageBucket: "project-fb2b2.firebasestorage.app",
-      messagingSenderId: "1056006588999",
-      appId: "1:1056006588999:web:cdab68f1f30b4c8cd7ff62",
-      measurementId: "G-VWDZ6EQM8T"
-    };
+      const firebaseConfig = {
+          apiKey: "AIzaSyCXwQvsp0uNKnNBUazQbfr9uRH-ZnIk0ow",
+          authDomain: "project-fb2b2.firebaseapp.com",
+          projectId: "project-fb2b2",
+          storageBucket: "project-fb2b2.firebasestorage.app",
+          messagingSenderId: "1056006588999",
+          appId: "1:1056006588999:web:cdab68f1f30b4c8cd7ff62",
+          measurementId: "G-VWDZ6EQM8T"
+      };
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
 
-  function sendSignInLink(email) {
-    const actionCodeSettings = {
-      url: 'https://kot-byte.github.io/Esim/akk.html',
-      handleCodeInApp: true
-    };
+      function sendSignInLink(email) {
+        const actionCodeSettings = {
+          url: 'https://kot-byte.github.io/Esim/akk.html',
+          handleCodeInApp: true
+        };
 
-    sendSignInLinkToEmail(auth, email, actionCodeSettings)
-      .then(() => {
-        window.localStorage.setItem('emailForSignIn', email);
-        alert("A sign-in link has been sent to your email.");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Error sending sign-in link: ", errorCode, errorMessage);
-        document.getElementById("error").innerText = errorMessage;
-        document.getElementById("error").style.display = "block";
-      });
-  }
+        sendSignInLinkToEmail(auth, email, actionCodeSettings)
+          .then(() => {
+            window.localStorage.setItem('emailForSignIn', email);
+            alert("A sign-in link has been sent to your email.");
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error("Error sending sign-in link: ", errorCode, errorMessage);
+            document.getElementById("error").innerText = errorMessage;
+            document.getElementById("error").style.display = "block";
+          });
+      }
 
-  document.getElementById("authForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const email = document.getElementById("email").value;
-    const termsChecked = document.getElementById("termsCheckbox").checked;
-    
-    if (!termsChecked) {
-      document.getElementById("error").innerText = "You must agree to the terms and conditions.";
-      document.getElementById("error").style.display = "block";
-      return;
-    }
-
-    sendSignInLink(email);
-  });
-
-  if (isSignInWithEmailLink(auth, window.location.href)) {
-    const email = window.localStorage.getItem('emailForSignIn');
-    if (email) {
-      signInWithEmailLink(auth, email, window.location.href)
-        .then((result) => {
-          alert("Sign-in successful!");
-          window.location.href = "https://kot-byte.github.io/Esim/akk.html"; 
-        })
-        .catch((error) => {
-          document.getElementById("error").innerText = "Error signing in: " + error.message;
+      document.getElementById("authForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const termsChecked = document.getElementById("termsCheckbox").checked;
+        
+        if (!termsChecked) {
+          document.getElementById("error").innerText = "You must agree to the terms and conditions.";
           document.getElementById("error").style.display = "block";
-        });
-    }
-  }
-</script>
+          return;
+        }
 
-<style>
-    #authForm {
-      background-color: #10151b;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      width: 500px;
-    }
-    h1 {
-      font-size: 20px;
-      margin-bottom: 15px;
-    }
-    input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 4px;
-      background-color: #1f262d;
-      color: #fff;
-    }
-    .checkbox-containerform {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      margin-top: 10px;
-      color: #fff;
-    }
-    input[type="checkbox"] {
-      margin-right: 8px;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #007bff;
-      border: none;
-      border-radius: 4px;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .error {
-      color: red;
-      margin-top: 10px;
-      display: none;
-    }
-</style>
+        sendSignInLink(email);
+      });
 
+      if (isSignInWithEmailLink(auth, window.location.href)) {
+        const email = window.localStorage.getItem('emailForSignIn');
+        if (email) {
+          signInWithEmailLink(auth, email, window.location.href)
+            .then((result) => {
+              alert("Sign-in successful!");
+              window.location.href = "https://kot-byte.github.io/Esim/akk.html"; 
+            })
+            .catch((error) => {
+              document.getElementById("error").innerText = "Error signing in: " + error.message;
+              document.getElementById("error").style.display = "block";
+            });
+        }
+      }
+    </script>
+
+</head>
 <body>
     <header class="py-4">
         <div class="container">
@@ -177,5 +124,4 @@
         </div>
     </section>
 </body>
-
 </html>
