@@ -3,26 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Firebase Registration Form</title>
+  <title>Firebase Authentication</title>
+  <!-- Подключаем Firebase SDK через CDN -->
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Register with Firebase</h2>
-  <form id="registration-form">
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" required />
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" required />
-    </div>
-    <button type="submit">Register</button>
-  </form>
 
+  <div class="container">
+    <h2>Sign Up / Log In</h2>
+    <form id="authForm">
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <input type="password" id="password" placeholder="Enter your password" required>
+      <button type="submit">Submit</button>
+      <p id="error" class="error"></p>
+    </form>
+  </div>
+
+  <!-- Firebase Initialization -->
   <script>
-    // Инициализация Firebase
+    // Конфигурация Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyCXwQvsp0uNKnNBUazQbfr9uRH-ZnIk0ow",
       authDomain: "project-fb2b2.firebaseapp.com",
@@ -37,24 +93,31 @@
     const app = firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    // Обработчик отправки формы
-    const form = document.getElementById('registration-form');
-    form.addEventListener('submit', async (event) => {
+    // Получаем элементы формы и ошибки
+    const authForm = document.getElementById("authForm");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const errorElement = document.getElementById("error");
+
+    // Обработчик формы
+    authForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+      const email = emailInput.value;
+      const password = passwordInput.value;
 
-      try {
-        // Регистрация пользователя с помощью Firebase
-        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-        console.log('User registered:', userCredential.user);
-        alert('Registration successful!');
-      } catch (error) {
-        console.error('Error registering user:', error);
-        alert('Registration failed: ' + error.message);
-      }
+      // Попытка регистрации/входа
+      auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert(`User signed up successfully: ${user.email}`);
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          errorElement.textContent = errorMessage;
+        });
     });
   </script>
+
 </body>
 </html>
