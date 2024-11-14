@@ -21,18 +21,22 @@
 </head>
 
 <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-    import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
   
-    // Конфигурация Firebase
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-      apiKey: "AIzaSyCXwQvsp0uNKnNBUazQbfr9uRH-ZnIk0ow",
-      authDomain: "project-fb2b2.firebaseapp.com",
-      projectId: "project-fb2b2",
-      storageBucket: "project-fb2b2.firebasestorage.app",
-      messagingSenderId: "1056006588999",
-      appId: "1:1056006588999:web:cdab68f1f30b4c8cd7ff62",
-      measurementId: "G-VWDZ6EQM8T"
+      apiKey: "AIzaSyAhHlWn9A7KUyzWpPTcpHP6M6XyZtpo-u0",
+      authDomain: "esim-df27b.firebaseapp.com",
+      projectId: "esim-df27b",
+      storageBucket: "esim-df27b.firebasestorage.app",
+      messagingSenderId: "304347730267",
+      appId: "1:304347730267:web:80a734df6aa27211f2ca7e",
+      measurementId: "G-97TL7HT82Z"
     };
   
     // Инициализация Firebase
