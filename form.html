@@ -22,8 +22,8 @@
 
 <script type="module">
   // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+  import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -45,7 +45,7 @@
     const actionCodeSettings = {
       // URL you want to redirect back to. The domain (www.example.com) for this
       // project must be in the authorized domains list in the Firebase Console.
-      url: 'https://your-app.com/finishSignUp?cartId=1234', // Replace with your URL
+      url: 'https://your-app.com/finishSignUp', // Replace with your URL
       handleCodeInApp: true
     };
 
@@ -78,6 +78,22 @@
 
     sendSignInLink(email);
   });
+
+  // Check if the user is returning from a link and handle sign-in
+  if (isSignInWithEmailLink(auth, window.location.href)) {
+    const email = window.localStorage.getItem('emailForSignIn');
+    if (email) {
+      signInWithEmailLink(auth, email, window.location.href)
+        .then((result) => {
+          alert("Sign-in successful!");
+          window.location.href = "https://your-app.com/welcome";  // Replace with your destination
+        })
+        .catch((error) => {
+          document.getElementById("error").innerText = "Error signing in: " + error.message;
+          document.getElementById("error").style.display = "block";
+        });
+    }
+  }
 </script>
 
 <style>
