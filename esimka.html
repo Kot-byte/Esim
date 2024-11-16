@@ -18,140 +18,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/images/simka.png" type="image/x-icon">
     <title>eSIM by Raccoon Shop</title>
-    <script type="module">
-        // Импорт Firebase
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-        import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
-    
-        // Конфигурация Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyCXwQvsp0uNKnNBUazQbfr9uRH-ZnIk0ow",
-            authDomain: "project-fb2b2.firebaseapp.com",
-            projectId: "project-fb2b2",
-            storageBucket: "project-fb2b2.firebasestorage.app",
-            messagingSenderId: "1056006588999",
-            appId: "1:1056006588999:web:cdab68f1f30b4c8cd7ff62",
-            measurementId: "G-VWDZ6EQM8T"
-        };
-    
-        // Инициализация Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-    
-        // Местное хранилище для корзины
-        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    
-        function addToCart(item) {
-            if (!cartItems.includes(item)) {
-                cartItems.unshift(item);
-                updateCartCount();
-                updateCartPanel();
-            }
-        }
-    
-        function updateCartCount() {
-            const cartCountElement = document.getElementById('cart-count');
-            cartCountElement.textContent = cartItems.length;
-        }
-    
-        function updateCartPanel() {
-            const cartPanel = document.getElementById('cart-panel');
-            const cartItemsList = document.getElementById('cart-items');
-            cartItemsList.innerHTML = '';
-    
-            if (cartItems.length === 0) {
-                const emptyMessage = document.createElement('li');
-                emptyMessage.textContent = 'Your cart is empty.';
-                emptyMessage.style.textAlign = 'center';
-                emptyMessage.style.fontStyle = 'italic';
-                emptyMessage.style.color = 'gray';
-                emptyMessage.style.fontWeight = '300';
-                cartItemsList.appendChild(emptyMessage);
-            } else {
-                cartItems.forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item;
-    
-                    const removeButton = document.createElement('button');
-                    removeButton.className = 'remove-btn';
-                    removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-                    removeButton.onclick = () => removeFromCart(item);
-    
-                    li.appendChild(removeButton);
-                    cartItemsList.appendChild(li);
-                });
-            }
-    
-            cartPanel.classList.toggle('hidden', cartItems.length === 0);
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-        }
-    
-        function removeFromCart(item) {
-            cartItems = cartItems.filter(cartItem => cartItem !== item);
-            updateCartCount();
-            updateCartPanel();
-        }
-    
-        // Функция добавления товаров в Firebase
-        async function addToFirebase(item) {
-            try {
-                const docRef = await addDoc(collection(db, "cartItems"), {
-                    itemName: item,
-                    addedAt: new Date().toISOString()
-                });
-                console.log("Document written with ID: ", docRef.id);
-            } catch (e) {
-                console.error("Error adding document: ", e);
-            }
-        }
-    
-        // Добавление товара в корзину и в Firebase
-        document.querySelectorAll('.btn-basket').forEach(button => {
-            button.addEventListener('click', (event) => {
-                event.preventDefault();
-                const packageCard = event.target.closest('.card-package');
-                const packageTitle = packageCard.querySelector('.package-card-title').textContent;
-                const priceOptions = packageCard.querySelectorAll('.price-card');
-                let isOptionSelected = false;
-    
-                priceOptions.forEach(option => {
-                    const checkbox = option.querySelector('.custom-checkbox');
-                    if (checkbox && checkbox.checked) {
-                        const priceText = option.querySelector('.card-title-little').textContent;
-                        const monthsText = option.querySelector('.card-text-months').textContent; 
-                        const item = `${packageTitle} - ${priceText} (${monthsText})`;
-                        addToCart(item);
-                        addToFirebase(item); // Добавляем в Firebase
-                        isOptionSelected = true;
-                    }
-                });
-    
-                if (!isOptionSelected) {
-                    const priceElement = packageCard.querySelector('.card-price');
-                    const priceText = priceElement ? priceElement.textContent.trim() : 'Нет цены';
-                    const item = `${packageTitle} - ${priceText}`;
-                    addToCart(item);
-                    addToFirebase(item); // Добавляем в Firebase
-                }
-            });
-        });
-    
-        window.onload = function() {
-            updateCartCount();
-            updateCartPanel();
-        };
-    
-        document.getElementById('close-cart').addEventListener('click', () => {
-            document.getElementById('cart-panel').style.display = 'none';
-        });
-    
-        document.getElementById('cart-icon').addEventListener('click', () => {
-            const cartPanel = document.getElementById('cart-panel');
-            cartPanel.style.display = (cartPanel.style.display === 'block') ? 'none' : 'block';
-        });
-    </script>
 </head>
 
 <body>
@@ -1388,7 +1254,7 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 <script src="assets/js/app.js"></script>
-<!-- <script>
+<script>
 
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
@@ -1493,6 +1359,6 @@ document.querySelectorAll('.btn-basket').forEach(button => {
 });
 
 
-    </script> -->
+    </script>
     
 </html>
