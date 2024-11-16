@@ -43,10 +43,10 @@
                         <i class="fas fa-user-circle"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="esimka.html">Esimka</a></li>
                         <li id="user-email-container">
                             <a class="dropdown-item" href="javascript:void(0);" id="user-email-link"></a>
                         </li>
+                        <li><a class="dropdown-item" href="esimka.html">Esimka</a></li>
                         <li><a class="dropdown-item" href="index.html" onclick="logout()">Logout</a></li>
                     </ul>
                     
@@ -78,7 +78,7 @@
         </div>
     </div>
     
-    <script>
+    <!-- <script>
        document.addEventListener("DOMContentLoaded", function () {
     // Получаем email из localStorage, если он сохранен после входа
     const email = window.localStorage.getItem('emailForSignIn');
@@ -98,8 +98,54 @@ function logout() {
     window.location.href = 'index.html';  // Перенаправляем на страницу выхода
 }
 
-    </script>
+    </script> -->
 
+    <script type="module" defer>
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+      
+        // Конфигурация Firebase
+        const firebaseConfig = {
+          apiKey: "AIzaSyCXwQvsp0uNKnNBUazQbfr9uRH-ZnIk0ow",
+          authDomain: "project-fb2b2.firebaseapp.com",
+          projectId: "project-fb2b2",
+          storageBucket: "project-fb2b2.firebasestorage.app",
+          messagingSenderId: "1056006588999",
+          appId: "1:1056006588999:web:cdab68f1f30b4c8cd7ff62",
+          measurementId: "G-VWDZ6EQM8T"
+        };
+      
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+      
+        // Функция для сохранения email в Firestore
+        async function saveEmailToFirestore(email) {
+          // Проверяем, существует ли уже такой email в базе
+          const userRef = doc(db, "users", email);
+          const docSnap = await getDoc(userRef);
+      
+          // Если документа нет, добавляем email в базу
+          if (!docSnap.exists()) {
+            await setDoc(userRef, { email: email });
+            console.log("Email added to Firestore");
+          } else {
+            console.log("Email already exists in Firestore");
+          }
+        }
+      
+        // Получаем email из элемента user-email-link
+        const userEmail = document.getElementById("user-email-link").textContent;
+      
+        // Проверяем, есть ли email
+        if (userEmail) {
+          // Проверяем, есть ли email в Firestore
+          saveEmailToFirestore(userEmail);
+        } else {
+          console.log("No email found in user-email-link");
+        }
+        
+      </script>
+    
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
