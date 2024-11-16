@@ -133,17 +133,18 @@ function logout() {
           }
         }
       
-        // Получаем email из элемента user-email-link
-        const userEmail = document.getElementById("user-email-link").textContent;
+        // Получаем email из localStorage (переменная emailForSignIn)
+        const emailFromLocalStorage = window.localStorage.getItem('emailForSignIn');
       
         // Проверяем, есть ли email
-        if (userEmail) {
+        if (emailFromLocalStorage) {
           // Проверяем, есть ли email в Firestore
-          saveEmailToFirestore(userEmail);
+          saveEmailToFirestore(emailFromLocalStorage);
+          // Отображаем email на странице (если нужно)
+          document.getElementById("user-email-link").textContent = emailFromLocalStorage;
         } else {
-          console.log("No email found in user-email-link");
+          console.log("No email found in localStorage");
         }
-        
       </script>
     
 </body>
