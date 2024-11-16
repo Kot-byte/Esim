@@ -170,7 +170,7 @@ background: rgba(255, 255, 255, 0.11);
         crossorigin="anonymous"></script>
     <script src="assets/js/app.js"></script>
 
-    <!-- <script>
+    <script>
         let cartItems = [];
 
         function addToCart(item) {
@@ -269,141 +269,9 @@ background: rgba(255, 255, 255, 0.11);
             zipCodeInput.style.borderBottomColor = '#b1b1b1'; 
         }
     }
-    </script> -->
-
-    <script>
-        // Импортируем функции из Firebase SDK
-        import { initializeApp } from "firebase/app";
-        import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
-    
-        // Конфигурация Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyCXwQvsp0uNKnNBUazQbfr9uRH-ZnIk0ow",
-            authDomain: "project-fb2b2.firebaseapp.com",
-            projectId: "project-fb2b2",
-            storageBucket: "project-fb2b2.firebasestorage.app",
-            messagingSenderId: "1056006588999",
-            appId: "1:1056006588999:web:cdab68f1f30b4c8cd7ff62",
-            measurementId: "G-VWDZ6EQM8T"
-        };
-    
-        // Инициализация Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-    
-        // Список товаров в корзине
-        let cartItems = [];
-    
-        // Функция для добавления товара в корзину
-        function addToCart(item) {
-            // Проверка, если товар уже в корзине
-            if (!cartItems.includes(item)) {
-                cartItems.push(item);
-                updateBasketItems();
-                saveCartToFirestore();
-            }
-            updateCartCount();
-        }
-    
-        // Обновление количества товаров в корзине
-        function updateCartCount() {
-            const cartCount = document.getElementById('cart-count');
-            cartCount.textContent = cartItems.length;
-        }
-    
-        // Обновление списка товаров в корзине
-        function updateBasketItems() {
-            const basketItemsList = document.getElementById('basket-items');
-            basketItemsList.innerHTML = '';
-            let total = 0;
-    
-            if (cartItems.length === 0) {
-                const emptyMessage = document.createElement('li');
-                emptyMessage.textContent = 'Ваша корзина пуста';
-                emptyMessage.className = 'empty-message';
-                basketItemsList.appendChild(emptyMessage);
-                document.getElementById('cart-total').textContent = total.toFixed(2);
-                return;
-            }
-    
-            cartItems.forEach(item => {
-                const li = document.createElement('li');
-                li.className = 'basket-item';
-    
-                const planLabel = document.createElement('div');
-                planLabel.className = 'plan-label';
-                planLabel.textContent = 'Тарифный план:';
-    
-                const itemText = document.createElement('span');
-                itemText.className = 'item-name'; 
-                itemText.textContent = item; 
-                planLabel.appendChild(itemText);
-    
-                li.appendChild(planLabel);
-    
-                // Создаем кнопку для удаления товара
-                const removeButton = document.createElement('button');
-                removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-                removeButton.className = 'btn-remove'; 
-                removeButton.onclick = () => {
-                    removeFromCart(item);
-                };
-    
-                li.appendChild(removeButton);
-                basketItemsList.appendChild(li);
-    
-                // Предположим, что цена товара указывается в конце строки как "- $10.00"
-                const priceMatch = item.match(/-\s*\$(\d+(\.\d{1,2})?)/);
-                if (priceMatch) {
-                    total += parseFloat(priceMatch[1]);
-                }
-            });
-    
-            document.getElementById('cart-total').textContent = total.toFixed(2);
-        }
-    
-        // Функция удаления товара из корзины
-        function removeFromCart(item) {
-            cartItems = cartItems.filter(cartItem => cartItem !== item);
-            updateCartCount();
-            updateBasketItems();
-            saveCartToFirestore(); // Обновляем Firestore после удаления
-        }
-    
-        // Функция сохранения корзины в Firestore
-        async function saveCartToFirestore() {
-            try {
-                // Здесь мы сохраняем корзину в Firestore. 
-                const cartRef = doc(db, "users", "userCart");
-                await setDoc(cartRef, {
-                    cartItems: cartItems
-                });
-            } catch (e) {
-                console.error("Ошибка сохранения корзины в Firestore: ", e);
-            }
-        }
-    
-        // Загружаем корзину при загрузке страницы
-        window.onload = async function () {
-            try {
-                // Получаем корзину из Firestore
-                const docRef = doc(db, "users", "userCart");
-                const docSnap = await getDoc(docRef);
-    
-                if (docSnap.exists()) {
-                    cartItems = docSnap.data().cartItems || [];
-                } else {
-                    cartItems = [];
-                }
-    
-                updateCartCount();
-                updateBasketItems();
-            } catch (e) {
-                console.error("Ошибка загрузки корзины из Firestore: ", e);
-            }
-        };
     </script>
-    
+
+
 
 
 </body>
