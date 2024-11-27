@@ -1255,7 +1255,10 @@
     crossorigin="anonymous"></script>
 <script src="assets/js/app.js"></script>
 <script>
-
+const emailFromLocalStorage = window.localStorage.getItem('emailForSignIn');
+if (emailFromLocalStorage) {
+  document.getElementById('user-email-link').textContent = emailFromLocalStorage;
+}
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
 function addToCart(item) {
