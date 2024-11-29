@@ -34,24 +34,28 @@
         const db = getFirestore(app);
 
         async function handleLogin(email, password) {
-            const userRef = doc(db, "users", email);
+            const userRef = doc(db, "users", email); // Используем email как идентификатор
 
             try {
                 const userDoc = await getDoc(userRef);
+
                 if (userDoc.exists()) {
-                    // Пользователь найден, пытаемся войти
+                    // Если пользователь найден, выполняем вход
                     await signInWithEmailAndPassword(auth, email, password);
                     alert("Вы успешно вошли в систему!");
                     window.location.href = "https://kot-byte.github.io/Esim/akk.html";
                 } else {
-                    // Пользователь не найден, отправляем ссылку для регистрации
+                    // Если пользователя нет, отправляем ссылку для регистрации
                     const actionCodeSettings = {
                         url: 'https://kot-byte.github.io/Esim/akk.html',
                         handleCodeInApp: true
                     };
 
                     await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+
+                    // Добавляем пользователя в Firestore с его email
                     await setDoc(userRef, { email });
+
                     alert("На вашу почту отправлена ссылка для регистрации.");
                 }
             } catch (error) {
