@@ -39,7 +39,4 @@ function logout() {
     window.location.href = 'index.html';
 }
 
-function openFormPage() {
-    window.location.href = 'form.html';
-}
 

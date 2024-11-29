@@ -44,10 +44,10 @@
                         <i class="fas fa-user-circle"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="esimka.html">Esimka</a></li>
                         <li id="user-email-container">
                             <a class="dropdown-item" href="javascript:void(0);" id="user-email-link"></a>
                         </li>
+                        <li><a class="dropdown-item" href="esimka.html">Esimka</a></li>
                         <li><a class="dropdown-item" href="index.html" onclick="logout()">Logout</a></li>
                     </ul>
                 </div>
@@ -1254,6 +1254,7 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 <script src="assets/js/app.js"></script>
+
 <script>
 const emailFromLocalStorage = window.localStorage.getItem('emailForSignIn');
 if (emailFromLocalStorage) {

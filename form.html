@@ -1,181 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" href="assets/images/simka.png" type="image/x-icon">
-    <title>eSIM by Raccoon Shop</title>
-
-    <script type="module" defer>
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-      import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
-
-      const firebaseConfig = {
-          apiKey: "AIzaSyCXwQvsp0uNKnNBUazQbfr9uRH-ZnIk0ow",
-          authDomain: "project-fb2b2.firebaseapp.com",
-          projectId: "project-fb2b2",
-          storageBucket: "project-fb2b2.firebasestorage.app",
-          messagingSenderId: "1056006588999",
-          appId: "1:1056006588999:web:cdab68f1f30b4c8cd7ff62",
-          measurementId: "G-VWDZ6EQM8T"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-
-      function sendSignInLink(email) {
-        const actionCodeSettings = {
-          url: 'https://kot-byte.github.io/Esim/akk.html',
-          handleCodeInApp: true
-        };
-
-        sendSignInLinkToEmail(auth, email, actionCodeSettings)
-          .then(() => {
-            window.localStorage.setItem('emailForSignIn', email);
-            alert("A sign-in link has been sent to your email.");
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error("Error sending sign-in link: ", errorCode, errorMessage);
-            document.getElementById("error").innerText = errorMessage;
-            document.getElementById("error").style.display = "block";
-          });
-      }
-
-      document.getElementById("authForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        const email = document.getElementById("email").value;
-        const termsChecked = document.getElementById("termsCheckbox").checked;
-        
-        if (!termsChecked) {
-          document.getElementById("error").innerText = "You must agree to the terms and conditions.";
-          document.getElementById("error").style.display = "block";
-          return;
-        }
-
-        sendSignInLink(email);
-      });
-
-      if (isSignInWithEmailLink(auth, window.location.href)) {
-        const email = window.localStorage.getItem('emailForSignIn');
-        if (email) {
-          signInWithEmailLink(auth, email, window.location.href)
-            .then((result) => {
-              alert("Sign-in successful!");
-              window.location.href = "https://kot-byte.github.io/Esim/akk.html"; 
-            })
-            .catch((error) => {
-              document.getElementById("error").innerText = "Error signing in: " + error.message;
-              document.getElementById("error").style.display = "block";
-            });
-        }
-      }
-    </script>
-
-</head>
-<style>
-    #authForm {
-      background-color: #10151b;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      width: 500px;
-    }
-    h1 {
-      font-size: 20px;
-      margin-bottom: 15px;
-    }
-    input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 4px;
-      background-color: #1f262d;
-      color: #fff;
-    }
-    .checkbox-containerform {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      margin-top: 10px;
-      color: #fff;
-    }
-    input[type="checkbox"] {
-      margin-right: 8px;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #007bff;
-      border: none;
-      border-radius: 4px;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .error {
-      color: red;
-      margin-top: 10px;
-      display: none;
-    }
-</style>
-<body>
-    <header class="py-4">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-auto">
-                    <p>
-                        eSIM by
-                        <a href="form.html" class="raccoon-btn raccoon-btn-little ms-2">
-                            Raccoon Shop
-                            <img src="assets/images/telegram.svg" alt="Telegram Icon">
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section class="hero-form" style="margin-top: 100px;">
-        <div class="container text-center">
-            <h2 class="title mb-4">Create Free Account</h2>
-            <p class="desc mb-5">Clarity gives you the blocks and components you need to create a truly professional website</p>
-
-            <div class="container d-flex justify-content-center align-items-center">
-                <form id="authForm">
-                    <input type="email" class="form-control my-3" id="email" placeholder="Enter your email" required>
-
-                    <div class="checkbox-containerform my-3">
-                        <input type="checkbox" id="termsCheckbox" required>
-                        <label for="termsCheckbox" class="ml-3">
-                            I agree with the <span class="text-primary">Terms & Conditions</span> of Clarity
-                        </label>
-                    </div>
-
-                    <button type="submit">Send Sign-In Link</button>
-
-                    <p id="error" class="error"></p>
-                </form>
-            </div>
-        </div>
-    </section>
-</body>
-</html> -->
 
 
 <!DOCTYPE html>
@@ -199,14 +21,15 @@
       import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 
       const firebaseConfig = {
-  apiKey: "AIzaSyAhHlWn9A7KUyzWpPTcpHP6M6XyZtpo-u0",
-  authDomain: "esim-df27b.firebaseapp.com",
-  projectId: "esim-df27b",
-  storageBucket: "esim-df27b.firebasestorage.app",
-  messagingSenderId: "304347730267",
-  appId: "1:304347730267:web:80a734df6aa27211f2ca7e",
-  measurementId: "G-97TL7HT82Z"
+  apiKey: "AIzaSyCXwQvsp0uNKnNBUazQbfr9uRH-ZnIk0ow",
+  authDomain: "project-fb2b2.firebaseapp.com",
+  projectId: "project-fb2b2",
+  storageBucket: "project-fb2b2.firebasestorage.app",
+  messagingSenderId: "1056006588999",
+  appId: "1:1056006588999:web:cdab68f1f30b4c8cd7ff62",
+  measurementId: "G-VWDZ6EQM8T"
 };
+
 
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
@@ -259,7 +82,7 @@
               const user = result.user;
               // Дополнительная логика для сохранения email или других данных в Firebase
 
-              window.location.href = "https://kot-byte.github.io/Esim/akk.html"; 
+              window.location.href = "https://kot-byte.github.io/Esim/akk.html";
             })
             .catch((error) => {
               document.getElementById("error").innerText = "Error signing in: " + error.message;
